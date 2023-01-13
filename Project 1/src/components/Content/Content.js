@@ -2,7 +2,7 @@ import { StyledContent } from "./Content.style";
 
 
 function Content (props) {
-  return (<StyledContent>
+  return (<StyledContent><p>Main</p>
     {props.children}
     </StyledContent>)
 }
