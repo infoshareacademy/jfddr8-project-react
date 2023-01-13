@@ -1,8 +1,8 @@
 import { StyledHeader } from "./Header.style"
 
-export function Header () {
+export function Header (props) {
     return (
-        <StyledHeader></StyledHeader>
+        <StyledHeader>{props.children}</StyledHeader>
     )
 }
 

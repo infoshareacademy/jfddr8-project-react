@@ -1,7 +1,9 @@
-export function Sidebar () {
+import { StyleSidebar } from "./Sidebar.style"
+
+export function Sidebar (props) {
 
     return (
-        <div></div>
+       <StyleSidebar>{props.children}</StyleSidebar>
     )
 }
 
