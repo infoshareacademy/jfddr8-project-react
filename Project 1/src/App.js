@@ -1,3 +1,7 @@
+//- utwórz komponent `Users` oraz `User`, który wyświetli listę uzytkowników (nazwę oraz email)
+//z pliku `users-data.js` z folderu `src/data` poprzez zaimportowanie jej w głównym komponencie aplikacji (`App`)
+//i przekazanie do komponentu `Users`. Lista ma się wyświetlać wewnątrz `Content`.
+
 import './App.css';
 import { Header } from './components/Header.js';
 import { Sidebar } from './components/Sidebar.js';
