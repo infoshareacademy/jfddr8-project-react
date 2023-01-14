@@ -1,5 +1,5 @@
 function Sidebar(props) {
-  return <h1>{props.menuItems}</h1>;
+  return <div>{props.menuItems}</div>;
 }
 
 export default Sidebar;
