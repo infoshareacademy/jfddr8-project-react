@@ -1,3 +1,3 @@
 export function Content() {
-    return <div className="content">gfdwehdewhf</div>;
+    return <div className="content">User List</div>;
   }

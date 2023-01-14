@@ -4,6 +4,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background-color: aqua;
 }
 
 .middle-page {
@@ -17,16 +18,31 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background-color: aqua;
 }
 
 .sidebar {
   width: 30%;
+  height: 100%;
   margin: auto;
-    text-align: center;
+  background-color: green;
 }
 
 .content {
   width: 70%;
+  height: 100%;
   margin: auto;
-  text-align: center;
+  background-color: blue;
+}
+
+.sidebar,
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+a {
+  text-decoration: none;
 }
