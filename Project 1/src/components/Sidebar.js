@@ -1,4 +1,4 @@
-import { MenuItems } from "../data/menu-items.js";
+import { MenuItems } from "../data/menu-items";
 
 export function Sidebar() {
   return (

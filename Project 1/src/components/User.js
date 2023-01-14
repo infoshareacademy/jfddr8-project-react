@@ -1,7 +1,7 @@
 export function User (props) {
 
     return(
-        <div className="content">
+        <div>
             {props.name} {props.email}
         </div>
     )
