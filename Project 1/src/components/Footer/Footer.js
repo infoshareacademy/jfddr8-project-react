@@ -1,9 +1,12 @@
-import { StyledFooter } from "./Footer.style"
+import { Button } from "../Button/Button";
+import { StyledFooter } from "./Footer.style";
 
-function Footer () {
-
-
-    return <StyledFooter>Footer</StyledFooter>
+function Footer(props) {
+  return (
+    <>
+      <StyledFooter>{props.text} <Button/></StyledFooter>
+    </>
+  );
 }
 
-export default Footer
+export default Footer;
