@@ -1,8 +1,5 @@
-import { UsersData } from '../data/users-data';
-import { Users } from './Users';
-
-export function Content() {
+export function Content(props) {
     return <div className="content">
-      <Users usersList={UsersData}/>
+      <div>{props.children}</div>
       </div>;
   }
