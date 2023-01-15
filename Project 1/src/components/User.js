@@ -4,5 +4,6 @@ export function User (props) {
         <div>
             {props.name} {props.email}
         </div>
+        
     )
 }

@@ -11,14 +11,14 @@ const logoSrc = "https://play-lh.googleusercontent.com/6hwIJLyur1myTggmf6Xzvt28Z
 
 function App() {
   return (
-    <>
+    <div>
     <Header title={'Title of application'} logoSrc={logoSrc}></Header>
     <main className="middle-page">
     <Sidebar MenuItems/>
-    <Content><Users usersList={UsersData}></Users></Content>
+    <Content><Users usersList={UsersData}/></Content>
     </main>
     <Footer text={'The Footer is located at this point'}/>
-    </>
+    </div>
   );
 }
 
