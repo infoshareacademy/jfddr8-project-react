@@ -1,3 +1,13 @@
+body.darkTheme {
+  background-color: black;
+  color: white;
+}
+
+body.lightTheme {
+  background-color: white;
+  color: black;
+}
+
 .app-header {
   height: 20vh;
   display: flex;
@@ -42,8 +52,4 @@
 
 a {
   text-decoration: none;
-}
-
-button {
-  border-radius: 5px;
 }
