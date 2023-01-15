@@ -6,7 +6,7 @@ import { UsersData } from "../data/users-data.js";
 function Content(props) {
   return (
     <div>
-      <h2>Użytkownicy:</h2>
+      <h2>Users:</h2>
       <div>{props.children}</div>
     </div>
   );
