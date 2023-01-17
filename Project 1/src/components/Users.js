@@ -5,6 +5,7 @@ import { User } from './User';
 export function Users(props) {
   return (
     <div className="content">
+      <input onChange={(e)=>props.handleSearch(e.target.value)} placeholder='username'></input>
       {props.usersList.map((userList) => (
         <User key={userList.name} name={userList.name} email={userList.email} id={userList.id} handleDelete={props.handleDelete}/>
       ))}
