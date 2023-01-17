@@ -1,3 +1,23 @@
+.head {
+  display: flex; 
+  justify-content: center;
+}
+
+.main {
+  display: flex;
+  justify-content: space-between;
+}
+
+.sidebar {
+  padding: 10px; 
+  flex-wrap: wrap;
+  
+}
+
+.container {
+  display:flex; 
+}
+
 .app {
   text-align: center;
 }
