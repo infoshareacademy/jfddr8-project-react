@@ -1,5 +1,7 @@
+
+
 export function Content(props) {
-    return (
-      <div></div>
-    );
-  }
+  return (<div>
+    {props.children}
+  </div>);
+}

@@ -1,0 +1,40 @@
+body {
+    display: flex;
+    justify-content: center;
+}
+
+.app {
+  display: grid;
+  grid-template-columns: 300px 500px;
+  grid-template-rows: 200px 800px 200px;
+  grid-template-areas:
+    "header header"
+    "sidebar content"
+    "footer footer";
+  gap: 10px;
+}
+
+.header {
+  grid-area: header;
+  background-color: lightgrey;
+  border: 3px solid black;
+  display: flex;
+}
+
+.sidebar {
+  grid-area: sidebar;
+  background-color: lightgrey;
+  border: 3px solid black;
+}
+
+.content {
+  grid-area: content;
+  background-color: lightgrey;
+  border: 3px solid black;
+}
+
+.footer {
+  grid-area: footer;
+  background-color: lightgrey;
+  border: 3px solid black;
+}
