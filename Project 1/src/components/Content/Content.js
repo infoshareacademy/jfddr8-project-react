@@ -1,11 +1,14 @@
+import { useState } from "react";
 import { StyledContent } from "./Content.style";
 
 
 function Content (props) {
-  return (<StyledContent>
+
+  return (<>
+  <StyledContent>
     {props.children}  
-    </StyledContent>) 
- 
+    </StyledContent> 
+ </>)
 }
 
 export default Content;

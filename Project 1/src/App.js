@@ -8,38 +8,41 @@ import { Users } from "./components/Users/Users";
 import { UsersData } from "./data/users-data";
 import { MenuItems } from "./data/menu-items";
 import { Button } from "./components/Button/Button";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-
-
-
-
-const logoSRC = 'https://www.haloursynow.pl/img/artykuly/13214_male-rasy-psow-do-mieszkania_1.jpg?d=1569840938';
-
-
+const logoSRC =
+  "https://www.haloursynow.pl/img/artykuly/13214_male-rasy-psow-do-mieszkania_1.jpg?d=1569840938";
 
 function App() {
-const [data, setData] = useState(UsersData)
+  const [data, setData] = useState(UsersData);
+  const [filteredData, setFilteredData] = useState(UsersData);
+  const [searchInput, setSearchInput] = useState("");
 
-const handleDelete = (id) => {
-  setData(data.filter((e)=>e.id !== id ))
-  console.log(data)
-}
+  useEffect(() => {
+    setFilteredData(data.filter((e) => e.name.includes(searchInput)));
+  }, [searchInput, data]);
 
-
-{/* <p>{data === [] ? 'Lista jest pusta' : {data} }</p> */}
+  const handleDelete = (id) => {
+    setData(data.filter((e) => e.id !== id));
+  };
 
   return (
-    <div className="app" >
-      <Header title={'Małe pieski'} logoSRC={logoSRC}/>
+    <div className="app">
+      <Header title={"Małe pieski"} logoSRC={logoSRC} />
       <StyledMiddleContainer>
-        <Sidebar menuItems ={MenuItems}/>
+        <Sidebar menuItems={MenuItems} />
         <Content>
-          <>{data.length === 0 && <p>Error</p>}</>
-          <Users handleDelete={handleDelete} users={data} />
-      </Content> 
+          <>{filteredData.length === 0 && <p>Error</p>}</>
+          <Users
+            handleDelete={handleDelete}
+            handleSearch={setSearchInput}
+            users={filteredData}
+          />
+        </Content>
       </StyledMiddleContainer>
-      <Footer text={'text'}><Button></Button></Footer>
+      <Footer text={"text"}>
+        <Button />
+      </Footer>
     </div>
   );
 }
