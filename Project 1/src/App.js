@@ -1,21 +1,22 @@
 import './App.css';
 import { Header } from './components/Header.js';
-import { Content } from './components/Header.js';
-import { Sidebar } from './components/Header.js';
-import { Footer } from './components/Header.js';
+import { Sidebar } from './components/Sidebar.js';
+import { Content } from './components/Content.js';
+import { Footer } from './components/Footer.js';
 
+const logoSrc = "https://play-lh.googleusercontent.com/6hwIJLyur1myTggmf6Xzvt28Zyepgv_5zDzZQ_YBKPVHpeS8U5I1T9WNDPpUGHdnsw=s128-rw";
 
 function App() {
   return (
-    <div className="app">
-        <Header 
-        title="Moja aplikacja"
-        logoSrc="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/NBC_logo.svg/800px-NBC_logo.svg.png"
-        />
-    </div>
+    <>
+    <Header title={'Tytuł aplikacji'} logoSrc={logoSrc}/>
+    <main className="middle-page">
+    <Sidebar MenuItems/>
+    <Content/>
+    </main>
+    <Footer text={'blablablablablabla'}/>
+    </>
   );
 }
 
-export default Header;
-
-
+export default App;

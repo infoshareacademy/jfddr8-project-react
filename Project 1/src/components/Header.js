@@ -1,10 +1,10 @@
+//- `Header` - obsługujący parametr `title` oraz `logoSrc`
 
-export function Header(props) {
+export function Header({ title, logoSrc }) {
     return (
-        <div>
-            <h1>{props.title}</h1>
-            <img src={props.logoSrc}/>
-        </div>
+      <header className="app-header">
+        <div>{title}</div>
+        <img src={logoSrc} />
+      </header>
     );
-}
-
+  }
