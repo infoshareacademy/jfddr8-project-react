@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { StyledContent } from "./Content.style";
 
 

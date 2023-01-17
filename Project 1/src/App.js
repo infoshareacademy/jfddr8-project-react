@@ -9,6 +9,8 @@ import { UsersData } from "./data/users-data";
 import { MenuItems } from "./data/menu-items";
 import { Button } from "./components/Button/Button";
 import { useEffect, useState } from "react";
+import styled, { ThemeProvider } from "styled-components";
+import Theme from "./components/Theme";
 
 const logoSRC =
   "https://www.haloursynow.pl/img/artykuly/13214_male-rasy-psow-do-mieszkania_1.jpg?d=1569840938";
@@ -26,8 +28,18 @@ function App() {
     setData(data.filter((e) => e.id !== id));
   };
 
+const StyledApp = styled.div``
+const theme = {
+body: '1c1c1c',
+title: '#fff',
+subtitle: 'b6b6b6',
+
+};
+
+
   return (
-    <div className="app">
+    <ThemeProvider theme={theme}>
+    <StyledApp>
       <Header title={"Małe pieski"} logoSRC={logoSRC} />
       <StyledMiddleContainer>
         <Sidebar menuItems={MenuItems} />
@@ -43,7 +55,8 @@ function App() {
       <Footer text={"text"}>
         <Button />
       </Footer>
-    </div>
+    </StyledApp>
+    </ThemeProvider>
   );
 }
 
