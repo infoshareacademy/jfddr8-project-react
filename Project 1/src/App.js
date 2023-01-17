@@ -7,40 +7,30 @@ import { StyledMiddleContainer } from "./Styled/MiddleContainer.style";
 import { Users } from "./components/Users/Users";
 import { UsersData } from "./data/users-data";
 import { MenuItems } from "./data/menu-items";
-import { Button } from "./components/Button/Button";
+import  Button  from "./components/Button/Button";
 import { useEffect, useState } from "react";
 import styled, { ThemeProvider } from "styled-components";
-
 
 const logoSRC =
   "https://www.haloursynow.pl/img/artykuly/13214_male-rasy-psow-do-mieszkania_1.jpg?d=1569840938";
 
-
-
-  
-  const StyledApp = styled.div``
-  const darkTheme = {
-  body: '#1c1c1c',
-  title: '#fff',
-  
-  
-  };
-  const lightTheme = {
-    body: '#fff',
-    title: '#1c1c1c',
-  }
-
+const StyledApp = styled.div``;
+const darkTheme = {
+  body: "#1c1c1c",
+  title: "#fff",
+};
+const lightTheme = {
+  body: "#fff",
+  title: "#1c1c1c",
+};
 
 function App() {
   const [data, setData] = useState(UsersData);
   const [filteredData, setFilteredData] = useState(UsersData);
   const [searchInput, setSearchInput] = useState("");
-  const [theme,SetTheme] = useState('light');
-  const isDarkTheme = theme === 'dark';
+  const [theme, SetTheme] = useState(true);
+ 
 
-  const toggleTheme = () => {
-    SetTheme(isDarkTheme ? 'light': 'dark')
-  }
 
   useEffect(() => {
     setFilteredData(data.filter((e) => e.name.includes(searchInput)));
@@ -50,27 +40,25 @@ function App() {
     setData(data.filter((e) => e.id !== id));
   };
 
-
-
   return (
-    <ThemeProvider theme={isDarkTheme ? darkTheme: lightTheme}>
-    <StyledApp>
-      <Header title={"Małe pieski"} logoSRC={logoSRC} />
-      <StyledMiddleContainer>
-        <Sidebar menuItems={MenuItems} />
-        <Content>
-          <>{filteredData.length === 0 && <p>Error</p>}</>
-          <Users
-            handleDelete={handleDelete}
-            handleSearch={setSearchInput}
-            users={filteredData}
-          />
-        </Content>
-      </StyledMiddleContainer>
-      <Footer text={"text"}>
-        <Button toggleTheme={toggleTheme} isDarkTheme={isDarkTheme}/>
-      </Footer>
-    </StyledApp>
+    <ThemeProvider theme={theme ? lightTheme : darkTheme}>
+      <StyledApp>
+        <Header title={"Małe pieski"} logoSRC={logoSRC} />
+        <StyledMiddleContainer>
+          <Sidebar menuItems={MenuItems} />
+          <Content>
+            <>{filteredData.length === 0 && <p>Error</p>}</>
+            <Users
+              handleDelete={handleDelete}
+              handleSearch={setSearchInput}
+              users={filteredData}
+            />
+          </Content>
+        </StyledMiddleContainer>
+        <Footer text={"text"}>
+          <Button theme={theme} SetTheme={(text)=>SetTheme(text)} />
+        </Footer>
+      </StyledApp>
     </ThemeProvider>
   );
 }

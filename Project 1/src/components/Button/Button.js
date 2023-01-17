@@ -1,20 +1,15 @@
-import { useState } from "react";
 import { ButtonStyled } from "./Button.style";
-
-export function Button ({toggleTheme}) { 
-    const [isToggled,setIsToggled] = useState(true);
-    
+function Button ({theme, SetTheme}) { 
+  
     const changeColor = () => {
-        setIsToggled(!isToggled)
-        toggleTheme();
-        console.log('tak')
-    
+        SetTheme(!theme)
+        console.log('mama')
+        
     }
-
-
-
 
     return <ButtonStyled onClick={changeColor}>Light / Dark</ButtonStyled>
     
 }
+
+export default Button
 

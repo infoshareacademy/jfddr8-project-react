@@ -1,4 +1,4 @@
-import { Button } from "../Button/Button";
+import  Button  from "../Button/Button";
 import { StyledFooter } from "./Footer.style";
 
 function Footer(props) {
