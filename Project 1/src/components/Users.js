@@ -6,7 +6,7 @@ export function Users(props) {
   return (
     <div className="content">
       {props.usersList.map((userList) => (
-        <User key={userList.name} name={userList.name} email={userList.email}/>
+        <User key={userList.name} name={userList.name} email={userList.email} id={userList.id} handleDelete={props.handleDelete}/>
       ))}
     </div>
   );

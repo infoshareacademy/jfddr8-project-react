@@ -7,10 +7,6 @@ body {
   display: flex;
   align-items: center;
   flex-direction: column;
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
-  border-right: 1px dashed black;
-  border-left: 1px dashed black;
 }
 
 code {
@@ -20,8 +16,6 @@ code {
 
 main{
   width: 100%;
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
 }
 
 #root {
