@@ -1,4 +1,33 @@
-body.darkTheme {
+*{
+  box-sizing: border-box;
+}
+
+body{
+  height: 100vh;
+}
+
+.piesek{
+  max-height: 100px;
+  justify-self: center
+  
+}
+
+body.dark{
+  background-color: black;
+  color: white;
+}
+body.light{
+  background-color: white;
+  color: black;
+}
+
+.deleteButton{
+  display: flex;
+  justify-content: space-between;
+}
+
+
+/* body.darkTheme {
   background-color: black;
   color: white;
 }
@@ -58,4 +87,4 @@ a {
 .deleteButton {
   display: flex;
   justify-content: space-between;
-}
+} */

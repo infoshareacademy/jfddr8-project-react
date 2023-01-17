@@ -4,13 +4,24 @@ body {
     "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+
+
+/* body {
+  margin: 0;
+  font-family: "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+    "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   display: flex;
   align-items: center;
   flex-direction: column;
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
-  border-right: 1px dashed black;
-  border-left: 1px dashed black;
 }
 
 code {
@@ -26,4 +37,4 @@ main{
 
 #root {
   width: 100%;
-}
+} */
