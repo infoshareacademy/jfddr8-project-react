@@ -7,15 +7,18 @@ export function Users(props) {
 				type='text'
 				onChange={(event) => props.handleSearch(event.target.value)}
 			/>
-			{props.users.map((element) => (
-				<User
-					handleDelete={props.handleDelete}
-					name={element.name}
-					email={element.email}
-					id={element.id}
-				/>
-			))}
-      {(!User) && <p>Users list empty!</p> }
+			{props.users.length === 0 ? (
+				<p>Users list empty!</p>
+			) : (
+				props.users.map((element) => (
+					<User
+						handleDelete={props.handleDelete}
+						name={element.name}
+						email={element.email}
+						id={element.id}
+					/>
+				))
+			)}
 		</div>
 	);
 }

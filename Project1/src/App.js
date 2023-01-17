@@ -8,7 +8,6 @@ import { Users } from './components/Users/Users';
 import { UsersData } from './data/users-data';
 import { MenuItems } from './data/menu-items';
 import { Links } from './components/Links';
-import { Shift } from './components/Shift';
 import { useState, useEffect } from 'react';
 import { AppStyled } from './Styled/App.style';
 
