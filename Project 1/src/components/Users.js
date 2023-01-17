@@ -8,6 +8,7 @@ export function Users(props) {
       <ul>
         {props.users.map((person) => (
           <User
+            key={person.id}
             user={person}
             name={person.name}
             email={person.email}

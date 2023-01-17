@@ -4,7 +4,7 @@ function Sidebar(props) {
       <h2>Social media links:</h2>
       <ul>
         {props.menuItems.map((item) => (
-          <li>
+          <li key={item.name}>
             {item.name} : {item.link}
           </li>
         ))}
