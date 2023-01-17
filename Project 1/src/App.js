@@ -9,9 +9,17 @@ import { Users } from "./components/Users";
 import { Button } from "./components/Button";
 import { MenuItems } from "./data/menu-items.js";
 import { useState } from "react";
+import { useEffect } from "react";
 
 function App() {
   const [data, setData] = useState(UsersData);
+  const [filteredData, setFilteredData] = useState(UsersData);
+  const [searchInput, setsearchInput] = useState("");
+
+  useEffect(() => {
+    console.log("coś");
+    setFilteredData(data.filter((e) => e.name.includes(searchInput)));
+  }, [searchInput, data]);
 
   const handleDelete = (id) => {
     setData(data.filter((e) => e.id !== id));
@@ -26,8 +34,12 @@ function App() {
       <div className="container">
         <Sidebar menuItems={MenuItems}></Sidebar>
         <Content>
-          <>{data.length === 0 && <p>Users list empty!</p>}</>
-          <Users handleDelete={handleDelete} users={data}></Users>
+          <>{filteredData.length === 0 && <p>Users list empty!</p>}</>
+          <Users
+            handleDelete={handleDelete}
+            handleSearch={setsearchInput}
+            users={filteredData}
+          ></Users>
         </Content>
       </div>
       <Footer text="&copy; 2023 Copyright : Agnieszka Szczepańska" />
