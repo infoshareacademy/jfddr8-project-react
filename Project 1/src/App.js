@@ -10,15 +10,37 @@ import { MenuItems } from "./data/menu-items";
 import { Button } from "./components/Button/Button";
 import { useEffect, useState } from "react";
 import styled, { ThemeProvider } from "styled-components";
-import Theme from "./components/Theme";
+
 
 const logoSRC =
   "https://www.haloursynow.pl/img/artykuly/13214_male-rasy-psow-do-mieszkania_1.jpg?d=1569840938";
+
+
+
+  
+  const StyledApp = styled.div``
+  const darkTheme = {
+  body: '#1c1c1c',
+  title: '#fff',
+  
+  
+  };
+  const lightTheme = {
+    body: '#fff',
+    title: '#1c1c1c',
+  }
+
 
 function App() {
   const [data, setData] = useState(UsersData);
   const [filteredData, setFilteredData] = useState(UsersData);
   const [searchInput, setSearchInput] = useState("");
+  const [theme,SetTheme] = useState('light');
+  const isDarkTheme = theme === 'dark';
+
+  const toggleTheme = () => {
+    SetTheme(isDarkTheme ? 'light': 'dark')
+  }
 
   useEffect(() => {
     setFilteredData(data.filter((e) => e.name.includes(searchInput)));
@@ -28,17 +50,10 @@ function App() {
     setData(data.filter((e) => e.id !== id));
   };
 
-const StyledApp = styled.div``
-const theme = {
-body: '1c1c1c',
-title: '#fff',
-subtitle: 'b6b6b6',
-
-};
 
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={isDarkTheme ? darkTheme: lightTheme}>
     <StyledApp>
       <Header title={"Małe pieski"} logoSRC={logoSRC} />
       <StyledMiddleContainer>
@@ -53,7 +68,7 @@ subtitle: 'b6b6b6',
         </Content>
       </StyledMiddleContainer>
       <Footer text={"text"}>
-        <Button />
+        <Button toggleTheme={toggleTheme} isDarkTheme={isDarkTheme}/>
       </Footer>
     </StyledApp>
     </ThemeProvider>
