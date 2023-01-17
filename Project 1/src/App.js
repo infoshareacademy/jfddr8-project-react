@@ -56,7 +56,7 @@ function App() {
           </Content>
         </StyledMiddleContainer>
         <Footer text={"text"}>
-          <Button theme={theme} SetTheme={(text)=>SetTheme(text)} />
+          <Button theme={theme} SetTheme={SetTheme} />
         </Footer>
       </StyledApp>
     </ThemeProvider>
