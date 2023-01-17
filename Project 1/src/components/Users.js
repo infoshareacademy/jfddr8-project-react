@@ -5,7 +5,13 @@ export function Users(props) {
   return (
     <ul>
       {props.users.map((person) => (
-        <User name={person.name} email={person.email} />
+        <User
+          user={person}
+          name={person.name}
+          email={person.email}
+          id={person.id}
+          handleDelete={props.handleDelete}
+        />
       ))}
     </ul>
   );

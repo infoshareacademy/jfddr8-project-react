@@ -8,8 +8,15 @@ import { User } from "./components/User";
 import { Users } from "./components/Users";
 import { Button } from "./components/Button";
 import { MenuItems } from "./data/menu-items.js";
+import { useState } from "react";
 
 function App() {
+  const [data, setData] = useState(UsersData);
+
+  const handleDelete = (id) => {
+    setData(data.filter((e) => e.id !== id));
+  };
+
   return (
     <div className="app">
       <Header
@@ -19,7 +26,8 @@ function App() {
       <div className="container">
         <Sidebar menuItems={MenuItems}></Sidebar>
         <Content>
-          <Users users={UsersData}></Users>
+          <>{data.length === 0 && <p>Users list empty!</p>}</>
+          <Users handleDelete={handleDelete} users={data}></Users>
         </Content>
       </div>
       <Footer text="&copy; 2023 Copyright : Agnieszka Szczepańska" />
