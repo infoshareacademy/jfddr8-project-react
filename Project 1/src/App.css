@@ -53,3 +53,18 @@
   display: flex;
   flex-direction: column;
 }
+
+.dark {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: black;
+  color: white;
+}
+.light {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: bisque;
+  color: black;
+}
