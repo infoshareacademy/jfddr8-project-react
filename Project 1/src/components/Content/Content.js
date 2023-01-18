@@ -1,21 +1,13 @@
 import { StyledContent } from "./Content.style";
 
 function Content (props) {
-
   return (<>
+  
   <StyledContent>
-    {props.children}  
+    <div><h2>User List</h2></div>
+    <div>{props.children} </div> 
     </StyledContent> 
   </>)
 }
 
 export default Content;
-
-
-// export function Content(props) {
-//   return (
-//     <div className="content">User list:
-//     <div> {props.children}</div>
-//     </div>
-//   );
-// }

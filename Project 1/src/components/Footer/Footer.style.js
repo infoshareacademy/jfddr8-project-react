@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const StyledFooter = styled.div`
     height: 25vh;
-    font-size: 50px;
+    font-size: 30px;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
