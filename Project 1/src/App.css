@@ -6,10 +6,9 @@ body{
   height: 100vh;
 }
 
-.piesek{
+.logo{
   max-height: 100px;
-  justify-self: center
-  
+  justify-self: center ; 
 }
 
 body.dark{
@@ -24,6 +23,10 @@ body.light{
 .deleteButton{
   display: flex;
   justify-content: space-between;
+}
+
+a {
+  text-decoration: none;
 }
 
 

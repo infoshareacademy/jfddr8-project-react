@@ -27,7 +27,7 @@ function App() {
   const [data, setData] = useState(UsersData);
   const [filteredData, setFilteredData] = useState(UsersData);
   const [searchInput, setSearchInput] = useState("");
-  const [theme, SetTheme] = useState(true);
+  const [theme, setTheme] = useState(true);
  
 
 
@@ -42,7 +42,7 @@ function App() {
   return (
     <ThemeProvider theme={theme ? lightTheme : darkTheme}>
       <StyledApp>
-        <Header title={"My first application"} logoSrc={logoSrc} />
+        <Header title={<h1>My first application</h1>} logoSrc={logoSrc} />
         <StyledMiddleContainer>
           <Sidebar menuItems={MenuItems} />
           <Content>
@@ -55,7 +55,7 @@ function App() {
           </Content>
         </StyledMiddleContainer>
         <Footer text={"text"}>
-          <Button theme={theme} SetTheme={(text)=>SetTheme(text)} />
+          <Button theme={theme} setTheme={(text)=>setTheme(text)} />
         </Footer>
       </StyledApp>
     </ThemeProvider>
