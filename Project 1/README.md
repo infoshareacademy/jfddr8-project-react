@@ -45,7 +45,9 @@
 - za pomocą `Styled components` ostyluj aplikację i reaguj odpowiednio na zmiany Theme.
 
 ## Zadanie 5
-- dodaj do komponentu User przycisk Delete i napisz jego obsługę (po jego naciśnięciu z listy ma się usuwać dany User, po odświezeniu strony pojawi się ponownie). Jeśli usuniesz wszystkich userów, wyświetl w miejscu listy komunikat - "Users list empty!"
+
+- dodaj do komponentu `User` przycisk `Delete` i napisz jego obsługę (po jego naciśnięciu z listy ma się usuwać dany User, po odświezeniu strony pojawi się ponownie). Jeśli usuniesz wszystkich userów, wyświetl w miejscu listy komunikat - "Users list empty!"
 
 ## Zadanie 6
-- dodaj wyszukiwarkę userów (po name) - input powyżej listy użytkowników, za pomocą którego będzie można wyfiltrować użytkowników, których name zawiera wpisaną frazę. Po skasowaniu frazy, lista ma wrócić do pierwotnego stanu. Przyda się useState i useEffect. Jeżeli wyszukiwarka nie znajdzie żadnego usera, wyświetl w miejscu listy komunikat - "Users list empty!"
+- dodaj wyszukiwarkę userów (po `name`) - input powyżej listy użytkowników, za pomocą którego będzie można wyfiltrować użytkowników, których `name` zawiera wpisaną frazę. Po skasowaniu frazy, lista ma wrócić do pierwotnego stanu. Przyda się useState i useEffect. Jeżeli wyszukiwarka nie znajdzie żadnego usera, wyświetl w miejscu listy komunikat - "Users list empty!"
+
