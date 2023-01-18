@@ -16,11 +16,11 @@ import { StyledButton } from "./components/Button.style";
 const logoSrc = "https://czasdzieci.pl/pliki/ro_obr/2014/image001_(2).png"
 
 
-
 function App() {
   const [usersList, setUsersList] = useState(UsersData);
   const [filterList, setFilterList] = useState(UsersData);
   const [searchString, setSearchString] = useState("");
+  
 
   useEffect(() => {
     setFilterList(

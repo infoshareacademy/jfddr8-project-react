@@ -1,11 +1,17 @@
-body.dark{
+/* body.dark{
     background-color: black;
     color: white;
   }
 body.light{
     background-color: white;
     color: black;
-  }
+  } */
+
+
+.darkMode {
+  background-color: black;
+  color: white;
+}
 
   img {
     width:100px;
