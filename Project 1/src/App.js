@@ -5,27 +5,47 @@ import Content from './components/Content';
 import Footer from './components/Footer';
 import {Users} from './components/Users.js';
 import {UsersData} from './data/users-data.js';
+import {useState , useEffect} from 'react';
+
 
 
 
 function App() {
+  const [theme, setTheme] = useState('light');
+  const toggleTheme = () => {
+    if (theme === 'light') {
+      setTheme('dark');
+    }else {
+      setTheme ('light');
+    }
+  };
+  useEffect(() => {
+    document.body.className = theme;
+  }, [theme]);
+
   return (
     <div className="app">
-      <
-      <Header 
-      title="Moja aplikacja"
-      logoSrc="https://www.clipartmax.com/png/small/469-4691996_logo-clipart-website-bbcpersian7-collections-world-wide-web-icon-png.png"
-      />
-      <div className="container">
-      <Sidebar
-      MenuItems
-      />
-      <Content>
-        <Users users={UsersData}/>
-      </Content>
+      <div className={`App ${theme}`}>
+        <button onClick={toggleTheme}>Toggle Theme</button>
       </div>
-      <Footer
-      subskrypcja="Zapisz się do subskrypcji"/>
+      <div className='header'>
+        <Header 
+        logoSrc="https://www.clipartmax.com/png/small/469-4691996_logo-clipart-website-bbcpersian7-collections-world-wide-web-icon-png.png"
+        title="Moja aplikacja"
+        />
+      </div>
+      <div className="container">
+        <Sidebar
+        MenuItems
+        />
+        <Content>
+          <Users users={UsersData}/>
+        </Content>
+      </div>
+      <div className="footer">
+        <Footer 
+        subskrypcja="Zapisz się do subskrypcji"/>
+      </div>
     </div>
   );
 }

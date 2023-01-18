@@ -1,8 +1,7 @@
-import {Users} from './Users';
 
 function Content(props) {
   return (
-    <div className="main">
+    <div className="main content">
       {props.children}
     </div>
   )

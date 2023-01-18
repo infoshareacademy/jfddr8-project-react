@@ -1,22 +1,57 @@
 .head {
   display: flex; 
   justify-content: center;
+  border: solid 2px black; 
 }
 
 .main {
   display: flex;
   justify-content: space-between;
+  height: 60vh; 
 }
 
 .sidebar {
-  padding: 10px; 
-  flex-wrap: wrap;
-  
+  width: 30%;
+  margin: auto;
+  flex-direction: column;
+  justify-content: space-around;
+  text-align: center;
+}
+
+.content {
+  border: solid 2px blue;
+  width: 70%; 
+  margin:auto;
+  justify-content: space-around;
+  align-items: center;
+}
+.users {
+ font-size: 25px;
+ font-weight: bold;
 }
 
 .container {
   display:flex; 
 }
+
+img {
+  height: 50px; 
+  width:50px; 
+}
+
+.dark {
+  background-color: #333;
+  color: #fff;
+  }
+  
+  .light {
+  background-color: #fff;
+  color: #333;
+  }
+
+ .footer{
+  border: solid black 2px; 
+ }
 
 .app {
   text-align: center;
