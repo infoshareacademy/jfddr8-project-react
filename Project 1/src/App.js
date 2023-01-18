@@ -11,6 +11,7 @@ import  Button  from "./components/Button/Button";
 import { useEffect, useState } from "react";
 import styled, { ThemeProvider } from "styled-components";
 
+
 const logoSRC =
   "https://www.haloursynow.pl/img/artykuly/13214_male-rasy-psow-do-mieszkania_1.jpg?d=1569840938";
 
@@ -28,7 +29,7 @@ function App() {
   const [data, setData] = useState(UsersData);
   const [filteredData, setFilteredData] = useState(UsersData);
   const [searchInput, setSearchInput] = useState("");
-  const [theme, SetTheme] = useState(true);
+  const [theme, setTheme] = useState(true);
  
 
 
@@ -56,7 +57,7 @@ function App() {
           </Content>
         </StyledMiddleContainer>
         <Footer text={"text"}>
-          <Button theme={theme} SetTheme={SetTheme} />
+          <Button theme={theme} setTheme={setTheme} />
         </Footer>
       </StyledApp>
     </ThemeProvider>

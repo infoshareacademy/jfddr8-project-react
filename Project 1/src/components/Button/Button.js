@@ -1,10 +1,8 @@
 import { ButtonStyled } from "./Button.style";
-function Button ({theme,SetTheme}) { 
+function Button ({theme,setTheme}) { 
   
     const changeColor = () => {
-        console.log()
-        SetTheme(!theme)
-        console.log('mama')
+        setTheme(!theme)
         
     }
 
