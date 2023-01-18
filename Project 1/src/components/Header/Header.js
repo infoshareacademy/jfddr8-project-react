@@ -6,9 +6,10 @@ export function Header(props) {
   return (
     <>
       <HeaderContent>
-        {props.title}
+      <div>
+       <h1>{props.title}</h1> 
         <img className='piesek' src={props.logoSRC}></img>
-
+        </div>
       </HeaderContent>
     </>
   );

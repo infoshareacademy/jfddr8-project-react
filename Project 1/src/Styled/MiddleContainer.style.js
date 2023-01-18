@@ -7,7 +7,4 @@ export const StyledMiddleContainer = styled.div`
     font-size: 20px;
 
 
-
-
-
 `

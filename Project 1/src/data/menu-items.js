@@ -1,14 +1,19 @@
 export const MenuItems = [
-    {
-        name: "Facebook",
-        link: "https://www.facebook.com",
-    },
-    {
-        name: "Instagram",
-        link: "https://www.instagram.com",
-    },
-    {
-        name: "Twitter",
-        link: "https://www.twitter.com",
-    }
+  {
+    name: "Facebook",
+    link: "https://www.facebook.com",
+  },
+  {
+    name: "Instagram",
+    link: "https://www.instagram.com",
+  },
+  {
+    name: "Twitter",
+    link: "https://www.twitter.com",
+  },
+
+  {
+    name: "Good doggi-bad doggi",
+    link: "https://www.gooddogbaddog.co.nz/",
+  },
 ];
