@@ -1,16 +1,10 @@
 import { ButtonStyled } from "./Button.style";
-function Button ({theme,SetTheme}) { 
-  
-    const changeColor = () => {
-        console.log()
-        SetTheme(!theme)
-        console.log('mama')
-        
-    }
+function Button({ theme, setTheme }) {
+  const changeColor = () => {
+    setTheme(!theme);
+  };
 
-    return <ButtonStyled onClick={changeColor}>Light / Dark</ButtonStyled>
-    
+  return <ButtonStyled onClick={changeColor}>Change color theme</ButtonStyled>;
 }
 
-export default Button
-
+export default Button;

@@ -6,9 +6,8 @@ body {
   height: 100vh;
 }
 
-.piesek {
+.logo {
   max-height: 100px;
-  justify-self: center;
 }
 
 body.dark {

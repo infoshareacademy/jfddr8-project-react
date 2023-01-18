@@ -12,7 +12,7 @@ import { useEffect, useState } from "react";
 import styled, { ThemeProvider } from "styled-components";
 
 const logoSRC =
-  "https://www.haloursynow.pl/img/artykuly/13214_male-rasy-psow-do-mieszkania_1.jpg?d=1569840938";
+  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQG5Y15lFLfS5X2mfk9LB_lQPc2z1RyOWxcew&usqp=CAU";
 
 const StyledApp = styled.div``;
 const darkTheme = {
@@ -28,7 +28,7 @@ function App() {
   const [data, setData] = useState(UsersData);
   const [filteredData, setFilteredData] = useState(UsersData);
   const [searchInput, setSearchInput] = useState("");
-  const [theme, SetTheme] = useState(true);
+  const [theme, setTheme] = useState(true);
 
   useEffect(() => {
     setFilteredData(data.filter((e) => e.name.includes(searchInput)));
@@ -41,7 +41,7 @@ function App() {
   return (
     <ThemeProvider theme={theme ? lightTheme : darkTheme}>
       <StyledApp>
-        <Header title={"Małe pieski"} logoSRC={logoSRC} />
+        <Header title={"My first React application"} logoSRC={logoSRC} />
         <StyledMiddleContainer>
           <Sidebar menuItems={MenuItems} />
           <Content>
@@ -53,8 +53,8 @@ function App() {
             />
           </Content>
         </StyledMiddleContainer>
-        <Footer text={"text"}>
-          <Button theme={theme} SetTheme={SetTheme} />
+        <Footer text="&copy; 2023 Copyright : Agnieszka Szczepańska">
+          <Button theme={theme} setTheme={setTheme} />
         </Footer>
       </StyledApp>
     </ThemeProvider>
