@@ -1,7 +1,16 @@
 import ProductsListItem from "./ProductsListItem";
+import App from "../App";
+import ShoppingCart from "./ShoppingCart";
+import ProductList from "./ProductList";
 
 function Home(props) {
-  return <div></div>;
+  return (
+    <>
+      <ProductList addToShopping={props.addToShopping} />
+
+      <ShoppingCart shoppingCart={props.shoppingCart} />
+    </>
+  );
 }
 
-export default ShoppingCart;
+export default Home;
