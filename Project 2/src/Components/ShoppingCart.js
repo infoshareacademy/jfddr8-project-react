@@ -1,9 +1,11 @@
-import React from 'react'
 
-function ShoppingCart() {
+
+
+function ShoppingCart({shoppingCart}) {
   return (
     <div>
-      price
+      Price
+      <p>{shoppingCart}</p>
     </div>
   )
 }
