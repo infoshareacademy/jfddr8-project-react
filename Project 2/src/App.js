@@ -4,6 +4,7 @@ import './App.css';
 import { ShoppingCart } from './components/ShoppingCart';
 import { useState } from 'react';
 import { Home } from './components/Login';
+import { Login } from './components/Login';
 
 function App() {
 	const [price, setPrice] = useState(0);
@@ -14,6 +15,7 @@ function App() {
 
 	return (
 		<div>
+      <Login />
 			<ShoppingCart price={price} />
 			<ProductList products={ProductsData} sumPrice={SumPrice} />
 		</div>

@@ -1,16 +1,11 @@
-import { ProductListItem } from "./ProductListItem"
-import { ShoppingCart } from "./ShoppingCart"
+import { ProductListItem } from './ProductListItem';
+import { ShoppingCart } from './ShoppingCart';
 
-
-
-
-export const Home = () =>  {
-
-
-    return (
-        <div>
-            <ProductListItem />
-            <ShoppingCart />
-        </div>
-    )
-}
+export const Home = (props) => {
+	return (
+		<div>
+			<ProductList sumPrice={SumPrice} />
+			<ShoppingCart />
+		</div>
+	);
+};
