@@ -4,6 +4,7 @@ import { Sidebar } from "./components/Sidebar";
 import { Content } from "./components/Content";
 import { Footer } from "./components/Footer";
 import { List } from "./components/Users";
+import { UsersData } from "./data/users-data";
 
 function App() {
   return (
@@ -20,7 +21,7 @@ function App() {
       </div>
       <div className="content">
         <Content>
-          <List />
+          <List data={UsersData} />
         </Content>
       </div>
       <div className="footer">

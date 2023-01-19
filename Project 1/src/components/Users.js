@@ -1,16 +1,15 @@
-import { UsersData } from "../data/users-data";
+import React from "react";
+import { Item } from "./User";
 
-export function List() {
+export function List(props) {
+  const data = props.data;
+  console.log(data);
   return (
     <div>
-      {UsersData.map((record) => {
+      {data.map((record) => {
         return (
-          <div className="box">
-            <span>
-              {record.name}
-              &nbsp;&nbsp;&nbsp;&nbsp;email:&nbsp;&nbsp;&nbsp;&nbsp;
-              {record.email}
-            </span>
+          <div className="box" key={record.id}>
+            <Item name={record.name} email={record.email} />
           </div>
         );
       })}
