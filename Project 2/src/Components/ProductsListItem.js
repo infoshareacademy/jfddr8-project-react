@@ -1,9 +1,4 @@
-
-
 function ProductsListItem(props) {
-    
-
-
   return (
     <div className="item-container">
       <div>
@@ -13,11 +8,12 @@ function ProductsListItem(props) {
         <div className="item-title">{props.title}</div>
         <div className="item-description">{props.description}</div>
         <div className="item-price">{props.price} $</div>
-        <button onClick={()=>props.addToShopping(props.price)}>Dodaj do koszyka</button>
+        <button onClick={() => props.addToShopping(props.price)}>
+          Dodaj do koszyka
+        </button>
       </div>
     </div>
   );
 }
 
 export default ProductsListItem;
-
