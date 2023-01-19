@@ -4,3 +4,7 @@
   flex-direction: column;
   padding: 0 50px;
 }
+
+a {
+  display: block;
+}

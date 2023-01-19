@@ -1,10 +1,12 @@
 import './App.css';
+import { Lista } from './components/ProductsList';
+import products from './data/products';
+
 
 function App() {
-
   return (
     <div>
-      Put solution here
+      <Lista data={products}/>
     </div>
   );
 }
