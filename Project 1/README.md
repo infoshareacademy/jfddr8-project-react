@@ -50,3 +50,4 @@
 
 ## Zadanie 6
 - dodaj wyszukiwarkę userów (po `name`) - input powyżej listy użytkowników, za pomocą którego będzie można wyfiltrować użytkowników, których `name` zawiera wpisaną frazę. Po skasowaniu frazy, lista ma wrócić do pierwotnego stanu. Przyda się useState i useEffect. Jeżeli wyszukiwarka nie znajdzie żadnego usera, wyświetl w miejscu listy komunikat - "Users list empty!"
+
