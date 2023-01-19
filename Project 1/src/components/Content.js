@@ -1,5 +1,5 @@
 //- `Sidebar`- obsługujący parametr `menuItems`
 
-export function Content() {
-    return <div className="content">gfdwehdewhf</div>;
+export function Content(props) {
+    return <div className="content">{props.children}</div>;
   }
