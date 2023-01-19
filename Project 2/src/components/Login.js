@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import {Home} from './Home'
 
 export const Login = () => {
 	const [login, setLogin] = useState('');

@@ -2,9 +2,6 @@ import { ProductListItem } from './ProductListItem';
 import { useState } from 'react';
 
 export const ProductList = (props) => {
-
-	
-
 	return (
 		<div>
 			<h2>Product List</h2>
@@ -17,7 +14,6 @@ export const ProductList = (props) => {
 						price={el.price}
 						thumbnail={el.thumbnail}
 						sumPrice={props.sumPrice}
-
 					/>
 				))}
 			</p>

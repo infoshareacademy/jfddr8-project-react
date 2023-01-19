@@ -3,7 +3,7 @@ import { ProductsData } from './data/products';
 import './App.css';
 import { ShoppingCart } from './components/ShoppingCart';
 import { useState } from 'react';
-import { Home } from './components/Login';
+import { Home } from './components/Home';
 import { Login } from './components/Login';
 
 function App() {
@@ -16,8 +16,8 @@ function App() {
 	return (
 		<div>
       <Login />
-			<ShoppingCart price={price} />
-			<ProductList products={ProductsData} sumPrice={SumPrice} />
+      <Home products={ProductsData} sumPrice={SumPrice} price={price}/>
+			
 		</div>
 	);
 }
