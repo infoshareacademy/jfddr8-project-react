@@ -3,12 +3,12 @@ import ShoppingCart from "./ShoppingCart";
 import ProductList from "./ProductList";
 
 function Home(props) {
-  return (
-    <div>
-      <ShoppingCart shoppingCart={props.shoppingCart} />
-      <ProductList addToShopping={props.addToShopping} />
-    </div>
-  );
-}
+    return (
+        <div>
+          <ShoppingCart shoppingCart={props.shoppingCart} />
+          <ProductList addToShopping={props.addToShopping} />
+        </div>
+    );
+};
 
 export default Home;
