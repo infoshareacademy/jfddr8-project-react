@@ -1,9 +1,9 @@
-import React from "react";
-
-import ProductsListItem from "./ProductListItem";
+import React, { Children } from "react";
+import ProductsListItem from "./ProductsListItem";
 import products from "../data/products";
+import { useState } from "react";
 
-function ProductList() {
+function ProductList(props) {
   return (
     <div>
       {products.map((e) => (
@@ -13,6 +13,7 @@ function ProductList() {
           price={e.price}
           images={e.images}
           description={e.description}
+          addToShopping={props.addToShopping}
         />
       ))}
     </div>
