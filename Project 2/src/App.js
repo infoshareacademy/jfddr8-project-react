@@ -5,6 +5,7 @@ import ShoppingCart from "./Components/ShoppingCart";
 import Login from "./Components/Login";
 import Home from "./Components/Home";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Auth from "./providers/Auth";
 
 function App() {
   const [shoppingCart, setShoppingCart] = useState(0);
@@ -12,6 +13,8 @@ function App() {
   const addToShopping = (currentProductPrice) => {
     setShoppingCart(shoppingCart + currentProductPrice);
   };
+  // TU SKONCZYŁAM, gdzie hoock'a ????
+  const isLogged = useContext(MyUserContext);
 
   return (
     <div className="app">
