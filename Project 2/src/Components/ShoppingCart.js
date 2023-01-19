@@ -5,7 +5,7 @@ function ShoppingCart({shoppingCart}) {
   return (
     <div>
       Price
-      <p>{shoppingCart}</p>
+      <p>{shoppingCart}$</p>
     </div>
   )
 }

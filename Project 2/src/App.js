@@ -5,7 +5,7 @@ import { useState, useContext } from "react";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import Login from "./Components/Login";
 import Home from "./Components/Home";
-import { LoginStatus } from "./Components/Auth";
+import { LoginStatus } from "./Provider/Auth";
 
 function App() {
   const { isLogged, setIsLogged } = useContext(LoginStatus);
@@ -26,17 +26,10 @@ function App() {
               isLogged ? <Navigate to="/home" /> : <Navigate to="/login" />
             }
           />
-          <Route path="/login" element={<Login />} />
+          <Route path="/login" element={isLogged ? <Navigate to="/home" /> : <Navigate to="/login" />} />
           <Route
             path="/home"
-            element={
-              <Home
-                shoppingCart={shoppingCart}
-                addToShopping={addToShopping}
-                className="home.element"
-              ></Home>
-            }
-          />
+            element={isLogged ? <Home shoppingCart={shoppingCart} addToShopping={addToShopping} className="home.element"/> : <Navigate to="/login" />} />
         </Routes>
       </div>
     </BrowserRouter>
