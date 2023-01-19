@@ -8,15 +8,13 @@ import Home from "./Components/Home";
 import { LoginStatus } from "./Components/Auth";
 
 function App() {
-  const {isLogged, setIsLogged} = useContext(LoginStatus)
-  
-  const [shoppingCart, setShoppingCart] = useState(0);
+  const { isLogged, setIsLogged } = useContext(LoginStatus);
 
+  const [shoppingCart, setShoppingCart] = useState(0);
 
   const addToShopping = (itemPrice) => {
     setShoppingCart(itemPrice + shoppingCart);
   };
-
 
   return (
     <BrowserRouter>
@@ -32,10 +30,11 @@ function App() {
           <Route
             path="/home"
             element={
-              <Home className="home.element">
-                <ShoppingCart shoppingCart={shoppingCart} />
-                <ProductList addToShopping={addToShopping} />
-              </Home>
+              <Home
+                shoppingCart={shoppingCart}
+                addToShopping={addToShopping}
+                className="home.element"
+              ></Home>
             }
           />
         </Routes>

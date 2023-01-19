@@ -1,11 +1,14 @@
-import React from 'react'
+import React from "react";
+import ShoppingCart from "./ShoppingCart";
+import ProductList from "./ProductList";
 
 function Home(props) {
   return (
     <div>
-      {props.children}
+      <ShoppingCart shoppingCart={props.shoppingCart} />
+      <ProductList addToShopping={props.addToShopping} />
     </div>
-  )
+  );
 }
 
-export default Home
+export default Home;
