@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import {Home} from './Home'
+import { Home } from './Home';
 
 export const Login = () => {
 	const [login, setLogin] = useState('');
@@ -18,6 +18,7 @@ export const Login = () => {
 
 	return (
 		<form onSubmit={(e) => handleSubmit(e)}>
+			<p>Zaloguj się proszę, żeby zobaczyć produkty!</p>
 			<label for='login'>Login:</label>
 			<input
 				type='text'

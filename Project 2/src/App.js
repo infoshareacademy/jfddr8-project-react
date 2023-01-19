@@ -5,6 +5,7 @@ import { ShoppingCart } from './components/ShoppingCart';
 import { useState } from 'react';
 import { Home } from './components/Home';
 import { Login } from './components/Login';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
 	const [price, setPrice] = useState(0);
@@ -15,8 +16,15 @@ function App() {
 
 	return (
 		<div>
-      <Login />
-      <Home products={ProductsData} sumPrice={SumPrice} price={price}/>
+      <BrowserRouter>
+      <Routes>
+      <Route path='home' element={<Home products={ProductsData} sumPrice={SumPrice} price={price}/>}></Route>
+      <Route path='login' element={<Login />}></Route>
+      <Route path='/' element={<Login />} />
+      </Routes>
+      </BrowserRouter>
+      
+      
 			
 		</div>
 	);
