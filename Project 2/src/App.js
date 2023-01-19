@@ -1,10 +1,18 @@
-import './App.css';
+import "./App.css";
+import ProductsList from "./components/ProductsList";
+import { useState } from "react";
 
 function App() {
 
+  const [shoppingCart, serShoppingCart] = useState(props);
+  const AddToShoppingCart = () => {
+    serShoppingCart =
+  }
+
   return (
     <div>
-      Put solution here
+      <ProductsList>{AddToShoppingCart} </ProductsList>
+      <ShoppingCart />
     </div>
   );
 }
