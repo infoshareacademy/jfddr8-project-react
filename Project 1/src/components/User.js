@@ -9,7 +9,7 @@ export function User(props) {
 
     const NameAndEmail = props.email + " " + props.name
     const [data, setData] = useState(NameAndEmail)
-
+    
     return (
         <div>
             {data}

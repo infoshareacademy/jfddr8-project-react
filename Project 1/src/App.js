@@ -24,6 +24,7 @@ function App() {
       setTheme ('light');
     }
   };
+
   useEffect(() => {
     document.body.className = theme;
   }, [theme]);
