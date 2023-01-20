@@ -8,10 +8,10 @@ export function Sidebar(props) {
     <div>
       {data.map((record) => {
         return (
-          <>
+          <div key={record.name}>
             <div className="name">{record.name}&nbsp;&nbsp;:</div>
             <div className="link">{record.link}</div>
-          </>
+          </div>
         );
       })}
     </div>
