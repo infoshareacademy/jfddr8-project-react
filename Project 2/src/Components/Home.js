@@ -1,15 +1,13 @@
-import ProductsListItem from "./ProductsListItem";
-import App from "../App";
+import React from "react";
 import ShoppingCart from "./ShoppingCart";
 import ProductList from "./ProductList";
 
 function Home(props) {
   return (
-    <>
-      <ProductList addToShopping={props.addToShopping} />
-
+    <div>
       <ShoppingCart shoppingCart={props.shoppingCart} />
-    </>
+      <ProductList addToShopping={props.addToShopping} />
+    </div>
   );
 }
 

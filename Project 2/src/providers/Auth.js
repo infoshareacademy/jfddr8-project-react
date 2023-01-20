@@ -1,18 +1,18 @@
-import { useState } from "react";
-import { useContext } from "react";
+import React, { useEffect, useState } from "react";
 
-function Auth() {
-    const defaultValue ={isLogged: false,}
-    const MyUserContext = React.createContext defaultValue
+export const LoginStatus = React.createContext([]);
+function Auth(props) {
+  const [isLogged, setIsLogged] = useState(false);
 
-  const [isLogged, setIsLogged] = useState({});
-  // useeffect , który sprawdza z localstorage czy jest zalogowany i zmienia isLogged
-  // kontekst podpiąć app.js na samej górze lub nawet w index.js - provider contextu
-  
+  useEffect(() => {
+    localStorage.getItem("user") && setIsLogged(true);
+  }, []);
+
   return (
-    <MyUserContext.Provider value={{ isLogged }}>
-      <App></App>
-    </MyUserContext.Provider>
+    <LoginStatus.Provider value={{ isLogged, setIsLogged }}>
+      {props.children}
+    </LoginStatus.Provider>
   );
 }
+
 export default Auth;

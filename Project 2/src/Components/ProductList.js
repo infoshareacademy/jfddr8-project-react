@@ -1,19 +1,18 @@
-import React, { Children } from "react";
+import React from "react";
 import ProductsListItem from "./ProductsListItem";
 import products from "../data/products";
-import { useState } from "react";
 
-function ProductList(props) {
+function ProductList({ addToShopping }) {
   return (
     <div>
       {products.map((e) => (
         <ProductsListItem
+          addToShopping={addToShopping}
           key={e.id}
           title={e.title}
           price={e.price}
           images={e.images}
           description={e.description}
-          addToShopping={props.addToShopping}
         />
       ))}
     </div>
