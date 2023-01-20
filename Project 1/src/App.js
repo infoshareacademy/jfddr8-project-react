@@ -13,21 +13,35 @@ import { useState , useEffect} from 'react';
 
 const logoSrc = "https://play-lh.googleusercontent.com/6hwIJLyur1myTggmf6Xzvt28Zyepgv_5zDzZQ_YBKPVHpeS8U5I1T9WNDPpUGHdnsw=s128-rw";
 
+
 function App() {
 
+  // const [browserSearch, setBrowserSearch] = useState(document.querySelector('#browse').value);
+  // useEffect((browserSearch) => if (browserSearch === "") {
+  //   return (props.users.name)
+  // }, [UsersData])
+  const [usersList, setUsersList] = useState(UsersData);
   const [theme, setTheme] = useState('light');
+  const [filteredUsersList, setFilteredUsersList] = useState(UsersData)
+
+  const handleDelete = (id) => {
+    setUsersList(usersList.filter((user) => user.id !== id))
+  }
 
   const toggleTheme = () => {
     if (theme === 'light') {
       setTheme('dark');
-    }else {
+    } else {
       setTheme ('light');
     }
   };
-
   useEffect(() => {
     document.body.className = theme;
   }, [theme]);
+
+  useEffect(() => {
+    setFilteredUsersList(usersList.filter((user) => user.name.includes.searchInput));
+  }, ["sobie napisz"]);
 
   return (
     <div className="app">
@@ -38,7 +52,8 @@ function App() {
     <main className="middle-page">
     <Sidebar MenuItems/>
     <Content>
-      <Users users={UsersData}/>
+      <input type="text" id="browse"></input>
+      <Users users={filteredUsersList} handleDelete={handleDelete}  />
     </Content>
     </main>
     <Footer text={'blablablablablabla'}/>

@@ -50,3 +50,10 @@
 
 ## Zadanie 6
 - dodaj wyszukiwarkę userów (po `name`) - input powyżej listy użytkowników, za pomocą którego będzie można wyfiltrować użytkowników, których `name` zawiera wpisaną frazę. Po skasowaniu frazy, lista ma wrócić do pierwotnego stanu. Przyda się useState i useEffect. Jeżeli wyszukiwarka nie znajdzie żadnego usera, wyświetl w miejscu listy komunikat - "Users list empty!"
+
+- stworzyć dodatkowy stan dla przefiltowanej listy
+- stworzyć jeszcze jeden stan dla frazy którą ktoś wyszukuje w wyszukiwarce
+- stworzyć useEffect który przyjmie dwie zaleności: twoją listę userów `UsersList` i przyjmie tą frazę którą uzytkownik wpisuje
+- w środku use effecta przyjmij callback function filter. Mają zostać tylko ci userzy których name zawiera wpisywaną frazę.
+- do propsa w users list przekaz filteredUsersList i ustawianie wpisywanej frazy
+- logikę filtrowania napisz w App.js ale wywołanie musisz zrobić w Users.js bo tam jest input

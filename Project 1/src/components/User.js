@@ -7,13 +7,13 @@ import { useState } from "react"
 
 export function User(props) {
 
-    const NameAndEmail = props.email + " " + props.name
-    const [data, setData] = useState(NameAndEmail)
-    
+    // const NameAndEmail = props.email + " " + props.name
+    // const [data, setData] = useState(NameAndEmail)
+
     return (
         <div>
-            {data}
-        <button onClick={() => setData(!data)}>Delete</button>
+            {props.name} {props.email}
+        <button onClick={() => props.handleDelete(props.id)}>Delete</button>
         </div>
     )
 }
