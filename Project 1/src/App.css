@@ -4,6 +4,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  font-size: 10vh;
 }
 
 .middle-page {
@@ -30,13 +31,17 @@
 .content {
   width: 70%;
   height:400px;
-  margin: auto 0;
+  margin: auto 0;}
+  .app-users
+  {
+    border:1px solid black;
+  }
   
   
   
  
   
-}
+
 .app-header
 {
   background-color: pink;

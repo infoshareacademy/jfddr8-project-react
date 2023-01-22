@@ -1,11 +1,13 @@
-import { StyledFooter } from "./Footer.style.js";
+import { StyledFooter } from "./Footer.style";
 
 
 export function Footer({ text }) {
     return (
-      <footer className="app-footer">
+      <StyledFooter>
+      
         <div>{text}</div>
-        <button>dark theme/light theme</button>
-      </footer>
+        
+      
+      </StyledFooter>
     );
   }

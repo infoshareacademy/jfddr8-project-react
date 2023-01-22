@@ -1,8 +1,11 @@
+import { StyledHeader } from "./Header.style";
 export function Header({ title, logoSrc }) {
     return (
-      <header className="app-header">
+      <StyledHeader>
+      
         <div>{title}</div>
         <img src={logoSrc} />
-      </header>
+      
+      </StyledHeader>
     );
   }

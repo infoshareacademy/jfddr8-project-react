@@ -1,8 +1,10 @@
-import { User } from "./users";
+import { StyledContent } from "./Content.style";
+
 
 export function Content() {
-    return <div className="content">
-        
-        </div>;
+    return 
+    <StyledContent>
+    
+        </StyledContent>;
   }
     

@@ -8,13 +8,22 @@ import { Users } from './components/users.js';
 import {Button} from './components/button.js';
 import { useState, useEffect } from 'react';
 import { UsersData } from './data/users-data';
-import { User } from './components/user';
-
+import styled, { ThemeProvider } from "styled-components";
 
 
 
 
 const logoSrc = "https://www.autocentrum.pl/ac-file/car-version/57629a25582c7d19a98b7699/bmw-seria-6-f06-f12-f13-m6-gran-coupe-facelifting-m6-560km-412kw-2013-2018.jpg";
+
+const StyledApp = styled.div``;
+const darkTheme = {
+  body: "green",
+  title: "violet",
+};
+const lightTheme = {
+  body: "violet",
+  title: "green",
+};
 
 function App() {
   const [data, setData] = useState(UsersData);
@@ -32,8 +41,9 @@ function App() {
   return (
 
 
-    <>
     
+    <ThemeProvider theme={theme ? lightTheme : darkTheme}>
+      <StyledApp>
     <Header title={'Tytuł aplikacji'} logoSrc={logoSrc}/>
     <main className="middle-page">
     <Sidebar links={'Linki:'} MenuItems/>
@@ -45,10 +55,12 @@ function App() {
               users={filteredData}
             />
     </main>
-    <Footer  text={'Stopka'}/>
-    <Button theme={theme} settheme={settheme}/>
+    <Footer text={"text"}>
+          <Button theme={theme} setTheme={settheme} ></Button>
+        </Footer>
+    </StyledApp>
+    </ThemeProvider>
     
     
-    </>
   )};
 	  export default App;
