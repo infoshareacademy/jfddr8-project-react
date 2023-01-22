@@ -7,5 +7,5 @@ export function Users(props) {
                 <User name={singleItem.name} email={singleItem.email}/>
             ))}
         </div>
-    );
+        );
 }
