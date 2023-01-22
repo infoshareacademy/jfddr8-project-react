@@ -38,6 +38,7 @@ function App() {
     <Footer text={'jakiś tekst'}/>
       <button onClick={toggleTheme}>Toggle Theme</button>
     </>
+    </div>
   );
 }
 
