@@ -1,6 +1,11 @@
-// - `ProductsListItem`- odpowiedzialny za wyświetlenie pojedynczego elementu na liście (obrazek, tytuł, opis i cena)
+import ShoppingCartContext from "../Context/ShoppingCartContext";
+import { useContext } from "react";
+import React from "react";
 
 function ProductsListItem(props) {
+  const PriceSum = useContext(ShoppingCartContext);
+  console.log(PriceSum);
+  function AddToShopping() {}
   return (
     <div className="item-container">
       <img className="item-image" src={props.images[0]}></img>
@@ -8,12 +13,7 @@ function ProductsListItem(props) {
         <div className="item-title">{props.title}</div>
         <div className="item-description">{props.description}</div>
         <div className="item-price">{props.price} $</div>
-        <button
-          onClick={() => {
-            AddToShoppingCart(props.price);
-          }}>
-          Dodaj do koszyka
-        </button>
+        <button onClick={() => {}}>Dodaj do koszyka</button>
       </div>
     </div>
   );

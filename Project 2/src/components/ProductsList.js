@@ -1,4 +1,5 @@
 // - `ProductsList` - odpowiedzialny za wyświetlenie listy produktów
+// wszystkie elementy z listy
 import React from "react";
 
 import ProductsListItem from "../components/ProductsListItem";
