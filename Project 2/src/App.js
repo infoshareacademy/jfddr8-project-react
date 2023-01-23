@@ -18,15 +18,19 @@ function App() {
           <Auth.Provider value={[isLogged, setIsLogged]}>
             <Routes>
               <Route
-                path="/login"
+                path="/"
                 element={
                   isLogged ? <Navigate to="/home" /> : <Navigate to="/login" />
-                }></Route>
+                }
+              />
+              <Route
+                path="/login"
+                element={isLogged ? <Navigate to="/home" /> : <Login />}
+              />
               <Route
                 path="/home"
-                element={
-                  isLogged ? <Navigate to="/home" /> : <Navigate to="/login" />
-                }></Route>
+                element={isLogged ? <Home /> : <Navigate to="/login" />}
+              />
             </Routes>
           </Auth.Provider>
         </ShoppingCartContext.Provider>
