@@ -14,31 +14,17 @@ body {
   gap: 10px;
 }
 
-.header {
-  grid-area: header;
-  background-color: lightgrey;
-  border: 3px solid black;
-  display: flex;
-}
-
-.sidebar {
-  grid-area: sidebar;
-  background-color: lightgrey;
-  border: 3px solid black;
-}
-
-.content {
-  grid-area: content;
-  background-color: lightgrey;
-  border: 3px solid black;
-}
-
-.footer {
-  grid-area: footer;
-  background-color: lightgrey;
-  border: 3px solid black;
-}
-
 .name {
   color:mediumblue;
+}
+
+.theme {
+  height: 20px;
+}
+
+.wrappertop {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
