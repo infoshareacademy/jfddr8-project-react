@@ -6,9 +6,7 @@ import Auth from "./Providers/Auth";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  // <React.StrictMode>
-    <Auth>
-      <App />
-    </Auth>
-  // </React.StrictMode>
+  <Auth>
+    <App />
+  </Auth>
 );
