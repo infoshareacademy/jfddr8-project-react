@@ -9,6 +9,7 @@ function ShoppingCart() {
   function Logout() {
     setIsLogged(false);
     console.log(isLogged);
+    localStorage.removeItem("user");
   }
 
   return (
