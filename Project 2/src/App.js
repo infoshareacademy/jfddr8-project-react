@@ -5,10 +5,14 @@ import { useState } from "react";
 import ShoppingCartContext from "./Context/ShoppingCartContext";
 
 function App() {
+  const [price, setPrice] = useState(0);
+
   return (
     <div>
-      <ProductsList></ProductsList>
-      <ShoppingCart />
+      <ShoppingCartContext.Provider value={[price, setPrice]}>
+        <ShoppingCart />
+        <ProductsList></ProductsList>
+      </ShoppingCartContext.Provider>
     </div>
   );
 }

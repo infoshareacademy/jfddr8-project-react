@@ -1,5 +1,9 @@
+import { useContext } from "react";
+import ShoppingCartContext from "../Context/ShoppingCartContext";
+
 function ShoppingCart() {
-  return <div>SUMA:</div>;
+  const [price] = useContext(ShoppingCartContext);
+  return <div>SUM:{price}$</div>;
 }
 
 export default ShoppingCart;
