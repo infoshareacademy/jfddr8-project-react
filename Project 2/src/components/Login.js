@@ -1,9 +1,10 @@
-import { useState } from 'react';
-import { Home } from './Home';
+import { useState, useContext } from 'react';
+import { AuthContext } from '../providers/Auth';
 
 export const Login = () => {
 	const [login, setLogin] = useState('');
 	const [password, setPassword] = useState('');
+	const { setIsLogged } = useContext(AuthContext);
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
@@ -12,13 +13,13 @@ export const Login = () => {
 			return;
 		} else {
 			localStorage.setItem('user', login);
-			// tu wpisz stan z kontekstu setIsLoged
+			setIsLogged(true);
 		}
 	};
 
 	return (
 		<form onSubmit={(e) => handleSubmit(e)}>
-			<p>Zaloguj się proszę, żeby zobaczyć produkty!</p>
+			<p>Please enter your login to see our products!</p>
 			<label for='login'>Login:</label>
 			<input
 				type='text'
@@ -26,8 +27,6 @@ export const Login = () => {
 				id='login'
 				onChange={(e) => setLogin(e.target.value)}
 			/>
-			<p>{login}</p>
-			<p>{password}</p>
 			<label for='password'>Password:</label>
 			<input
 				type='password'

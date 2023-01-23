@@ -1,15 +1,17 @@
-import { useState } from 'react';
-import { useContext } from 'react';
-import App from '../App';
+import React, { useEffect, useState } from 'react';
 
-export const Auth = () => {
-	// const [isLogged, setIsLogged] = useState({});
-	// const defaultValue = { isLogged: false };
-	// const MyUserContext = React.createContext(defaultValue);
+export const AuthContext = React.createContext([]);
 
-	// return (
-	// 	<MyUserContext.Provider value={{ isLogged }}>
-	// 		<App></App>
-	// 	</MyUserContext.Provider>
-	// );
+export const Auth = (props) => {
+	const [isLogged, setIsLogged] = useState(false);
+
+	useEffect(() => {
+		localStorage.getItem('user') && setIsLogged(true);
+	}, []);
+
+	return (
+		<AuthContext.Provider value={{ isLogged, setIsLogged }}>
+			{props.children}
+		</AuthContext.Provider>
+	);
 };
