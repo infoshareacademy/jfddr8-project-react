@@ -1,7 +1,9 @@
-import { ProductListItem } from "./ProductsListItem"
+import React from "react";
+
+import ProductsListItem  from "./ProductsListItem"
 import products from "../data/products";
 
-function ProductList() {
+function ProductsList(props) {
     return (
         <div>
             {products.map((e) => (
@@ -11,7 +13,9 @@ function ProductList() {
             price={e.price}
             images={e.images}
             description={e.description}
+            addToCart={props.addToCart}
             />))}
         </div>
     )
 }
+export default ProductsList;

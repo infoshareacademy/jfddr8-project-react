@@ -1,26 +1,25 @@
-import { useState } from "react"
+function ProductsListItem(props) {
+    const addToCart = () => {
+        const itemToAdd = {
+            id: props.key,
+            price: props.price,
+        };
 
-export function ProductListItem(props) {
-    const [shoppingCart, setShoppingCart] = useState(props);
-
-    const addToShopping = () => {
-        setShoppingCart(shoppingCart + props);
-        console.log('sh:', shoppingCart);
-    };
+        props.addToCart(itemToAdd);
+    }
 
     return (
-        <div className="item-constainer">
+        <div className="item-container">
             <div>
-                <img className="item-image" src={props.images[0]}></img>
+                <img className="item-image" src={props.images[0]} alt=""></img>
             </div>
             <div>
                 <div className="item-title">{props.title}</div>
                 <div className="item-description">{props.description}</div>
                 <div className="item-price">{props.price} $</div>
-                <button onClick={()=>props.addToShopping(props.price)}>Dodaj do koszyka</button>
+                <button onClick={()=>addToCart()}>Dodaj do koszyka</button>
             </div>
         </div>
     )
 }
-
-export default ProductsListItem
+export default ProductsListItem;
