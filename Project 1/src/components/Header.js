@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Styles from "../App.css";
 import { ThemeContext } from "./ThemeContext";
 import { useContext } from "react";

@@ -7,11 +7,9 @@ import { List } from "./components/Users";
 import { UsersData } from "./data/users-data";
 import { MenuItems } from "./data/menu-items";
 import { useContext } from "react";
-import { useState } from "react";
 import styled from "styled-components";
 import { ThemeProvider } from "styled-components";
 import { createGlobalStyle } from "styled-components";
-import { Provider } from "./components/ThemeContext";
 import { ThemeContext } from "./components/ThemeContext";
 
 const darkTheme = {
