@@ -58,7 +58,9 @@ const Foot = styled.div`
 
 function App() {
   const {theme} = useContext(ThemeContext)
+  console.log(Naglowek.theme)
   return (
+    
     <ThemeProvider theme={theme ? lightTheme : darkTheme}>
       <GlobalStyle />
       <div className="app">
@@ -82,6 +84,7 @@ function App() {
         </Foot>
       </div>
     </ThemeProvider>
+    
   );
 }
 

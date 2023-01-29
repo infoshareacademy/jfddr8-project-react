@@ -8,9 +8,7 @@ import { Provider } from "./components/ThemeContext";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider>
-  <React.StrictMode>
     <App />
-  </React.StrictMode>
   </Provider>
 );
 

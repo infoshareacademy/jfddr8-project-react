@@ -5,13 +5,9 @@ export function List(props) {
   const data = props.data;
   console.log(data);
   return (
-    <div>
+    <div className="container">
       {data.map((record) => {
-        return (
-          <div className="box" key={record.id}>
-            <Item name={record.name} email={record.email} />
-          </div>
-        );
+        return <Item name={record.name} email={record.email} key={record.id} />;
       })}
     </div>
   );
