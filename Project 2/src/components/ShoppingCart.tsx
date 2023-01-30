@@ -1,7 +1,7 @@
 import { AuthContext } from '../providers/Auth';
 import { useContext } from 'react';
 
-export const ShoppingCart = (props) => {
+export const ShoppingCart: React.FC<{price: number}> = (props) => {
 	const { setIsLogged } = useContext(AuthContext);
 
 	const logoutHandler = () => {

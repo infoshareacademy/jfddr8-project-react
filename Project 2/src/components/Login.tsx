@@ -1,12 +1,12 @@
-import { useState, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { AuthContext } from '../providers/Auth';
 
-export const Login = () => {
-	const [login, setLogin] = useState('');
+export const Login = (): JSX.Element => {
+	const [login, setLogin] = useState<string>('');
 	const [password, setPassword] = useState('');
 	const { setIsLogged } = useContext(AuthContext);
 
-	const handleSubmit = (event) => {
+	const handleSubmit = (event: React.FormEvent): void => {
 		event.preventDefault();
 		if (!login || !password) {
 			alert('wpisz login i hasło');
@@ -20,14 +20,14 @@ export const Login = () => {
 	return (
 		<form onSubmit={(e) => handleSubmit(e)}>
 			<p>Please enter your login to see our products!</p>
-			<label for='login'>Login:</label>
+			<label htmlFor='login'>Login:</label>
 			<input
 				type='text'
 				name='login'
 				id='login'
 				onChange={(e) => setLogin(e.target.value)}
 			/>
-			<label for='password'>Password:</label>
+			<label htmlFor='password'>Password:</label>
 			<input
 				type='password'
 				name='password'

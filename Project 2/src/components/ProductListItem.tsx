@@ -1,6 +1,10 @@
-import { useState } from 'react';
-
-export const ProductListItem = (props) => {
+export const ProductListItem: React.FC<{
+	thumbnail: string;
+	title: string;
+	description: string;
+	price: number;
+	sumPrice: (price: number) => void;
+}> = (props) => {
 	return (
 		<div>
 			<img src={props.thumbnail} style={{ width: 80 + 'px' }}></img>

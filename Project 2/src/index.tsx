@@ -5,7 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Auth } from './providers/Auth';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
 	<Auth>
 		<App />

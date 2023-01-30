@@ -7,11 +7,11 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthContext } from './providers/Auth';
 
 function App() {
-	const [price, setPrice] = useState(0);
+	const [price, setPrice] = useState<number>(0);
 
 	const { isLogged } = useContext(AuthContext);
 
-	const SumPrice = (currentProductPrice) => {
+	const SumPrice = (currentProductPrice: number): void => {
 		setPrice(price + currentProductPrice);
 	};
 

@@ -1,8 +1,11 @@
-import { ProductListItem } from './ProductListItem';
 import { ShoppingCart } from './ShoppingCart';
 import { ProductList } from './ProductList';
 
-export const Home = (props) => {
+export const Home: React.FC<{
+	products: any;
+	price: number;
+	sumPrice: (n: number) => void;
+}> = (props) => {
 	return (
 		<div>
 			<ShoppingCart price={props.price} />
