@@ -13,7 +13,7 @@ export const LoginStatus = React.createContext<LoginStatusType>({} as LoginStatu
 const Auth = (props:PropsWithChildren): JSX.Element => {
   const [isLogged, setIsLogged] = useState(false);
 
-  useEffect(() => {
+  useEffect(():void => {
     localStorage.getItem("user") && setIsLogged(true);
   }, []);
 

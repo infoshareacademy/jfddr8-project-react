@@ -7,7 +7,7 @@ type shoppingCartType ={
 
 function ShoppingCart({ shoppingCart }: shoppingCartType ) {
   const { setIsLogged } = useContext(LoginStatus);
-  const handleLogOut = () => {
+  const handleLogOut = ():void => {
     setIsLogged(false);
     localStorage.removeItem("user");
   };

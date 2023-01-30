@@ -1,9 +1,11 @@
+export type AddToShoppingType = (itemPrice: number) => void
+
 type productsListItemProps = {
   title: string;
   images: string[];
   description: string;
   price: number;
-  addToShopping: (itemPrice: number) => void;
+  addToShopping: AddToShoppingType;
 }
 
 function ProductsListItem(props: productsListItemProps) {
