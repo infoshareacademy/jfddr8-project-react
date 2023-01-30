@@ -1,10 +1,10 @@
 import { ProductListItem } from "./ProductListItem";
 
-export function Lista(props) {
+export function Lista(props: { data: any; }):JSX.Element {
     
   const data = props.data;
   console.log("Hello");
-  return data.map((record) => {
+  return data.map((record: { id: number; title: string; images: string; description: string; price: number; }) => {
     return (
       <div>
         <ProductListItem
