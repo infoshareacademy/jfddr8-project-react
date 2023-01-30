@@ -4,3 +4,49 @@
   flex-direction: column;
   padding: 0 50px;
 }
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cart {
+  display: flex;
+  align-items: center;
+}
+
+.app-link {
+  color: #61dafb;
+}
+
+.product-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.product-list-item {
+  display: flex;
+  align-items: center;
+  border: 2px solid black;
+  width: 500px;
+  padding: 20px;
+  margin: 10px 0;
+}
+
+p {
+  margin: 0;
+}
+
+.product-description {
+  display: flex;
+  flex-direction: column;
+}
+
+img {
+  max-width: 200px;
+}
+
+button {
+  margin-top: 20px;
+}
