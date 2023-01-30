@@ -7,7 +7,7 @@ function App() {
 
   const [price, setPrice] = useState(0);
 
-  const SumPrice = (itemPrice) => {
+  const SumPrice = (itemPrice: number) => {
    setPrice(itemPrice+price);
   };
 
