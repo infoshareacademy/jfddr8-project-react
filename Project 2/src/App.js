@@ -3,7 +3,7 @@ import { useState, useContext } from "react";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import Login from "./Components/Login";
 import Home from "./Components/Home";
-import { LoginStatus } from "./Providers/Auth";
+import { LoginStatus } from "./providers/Auth";
 
 function App() {
   const { isLogged } = useContext(LoginStatus);

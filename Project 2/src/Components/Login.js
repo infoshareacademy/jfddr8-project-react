@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { LoginStatus } from "../Providers/Auth";
+import { LoginStatus } from "../providers/Auth";
 
 function Login() {
   const [login, setLogin] = useState("");

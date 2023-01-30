@@ -1,4 +1,4 @@
-import { LoginStatus } from "../Providers/Auth";
+import { LoginStatus } from "../providers/Auth";
 import { useContext } from "react";
 
 function ShoppingCart({ shoppingCart }) {
