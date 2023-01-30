@@ -1,7 +1,18 @@
 import React, { useEffect, useState } from "react";
 
-export const LoginStatus = React.createContext([]);
-function Auth(props) {
+type LoginStatusType = {
+  isLogged: boolean;
+  setIsLogged: (isLogged: boolean) => void;
+};
+
+type PropsWithChildren = {
+  children: JSX.Element;
+};
+
+export const LoginStatus = React.createContext<LoginStatusType>(
+  {} as LoginStatusType
+);
+const Auth = (props: PropsWithChildren): JSX.Element => {
   const [isLogged, setIsLogged] = useState(false);
 
   useEffect(() => {
@@ -13,6 +24,6 @@ function Auth(props) {
       {props.children}
     </LoginStatus.Provider>
   );
-}
+};
 
 export default Auth;

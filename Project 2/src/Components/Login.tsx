@@ -1,11 +1,11 @@
 import React, { useState, useContext } from "react";
 import { LoginStatus } from "../providers/Auth";
 
-function Login() {
-  const [login, setLogin] = useState("");
+function Login(): JSX.Element {
+  const [login, setLogin] = useState<string>("");
   const { setIsLogged } = useContext(LoginStatus);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     localStorage.setItem("user", login);
     setIsLogged(true);
