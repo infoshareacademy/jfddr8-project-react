@@ -1,7 +1,11 @@
 import { LoginStatus } from "../Providers/Auth";
 import { useContext } from "react";
 
-function ShoppingCart({ shoppingCart }) {
+type shoppingCartType = {
+  shoppingCart:number
+}
+
+function ShoppingCart({ shoppingCart }:shoppingCartType) {
   const { setIsLogged } = useContext(LoginStatus);
   const handleLogOut = () => {
     setIsLogged(false);

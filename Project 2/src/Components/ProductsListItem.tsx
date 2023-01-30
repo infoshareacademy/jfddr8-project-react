@@ -1,4 +1,12 @@
-function ProductsListItem(props) {
+type productListItem = {
+  title: string;
+  images: string[];
+  description: string;
+  price: number;
+  addToShopping: (itemPrice: number) => void;
+};
+
+function ProductsListItem(props: productListItem) {
   return (
     <div className="item-container">
       <div>

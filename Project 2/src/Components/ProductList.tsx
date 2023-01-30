@@ -1,8 +1,11 @@
-import React from "react";
 import ProductsListItem from "./ProductsListItem";
 import products from "../data/products";
 
-function ProductList({ addToShopping }) {
+type productListProps = {
+  addToShopping: (itemPrice:number) => void
+}
+
+function ProductList({ addToShopping }:productListProps) {
   return (
     <div>
       {products.map((e) => (

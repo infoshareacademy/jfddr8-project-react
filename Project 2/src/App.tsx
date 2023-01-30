@@ -10,7 +10,7 @@ function App() {
 
   const [shoppingCart, setShoppingCart] = useState(0);
 
-  const addToShopping = (itemPrice) => {
+  const addToShopping = (itemPrice:number):void => {
     setShoppingCart(itemPrice + shoppingCart);
   };
 
