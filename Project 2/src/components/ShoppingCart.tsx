@@ -1,10 +1,6 @@
-import React from "react";
-import { ProductsListItem } from "./ProductsListItem";
-
-export function ShoppingCart (props) {
+export const ShoppingCart = ({basketValue}) => {
     return (
-        <div>
-            Shopping summary: {props.price}
-        </div>
+        <h1>${basketValue}</h1>
     )
 }
+Footer

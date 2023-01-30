@@ -5,13 +5,8 @@ import { AuthContext } from "../../providers/Auth";
 export const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-
-    type isLogged = boolean;
-    type setIsLogged = (s: string) => string;
-    type React = [isLogged, setIsLogged]
-    const [isLogged, setIsLogged ]: React = useContext(AuthContext);
+    const { isLogged, setIsLogged } = useContext(AuthContext);
     const navigate = useNavigate();
-
 
     useEffect(() => {
         if(isLogged) {
