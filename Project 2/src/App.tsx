@@ -8,7 +8,7 @@ import { LoginStatus } from "./Providers/Auth";
 function App() {
   const { isLogged } = useContext(LoginStatus);
 
-  const [shoppingCart, setShoppingCart] = useState(0);
+  const [shoppingCart, setShoppingCart] = useState<number>(0);
 
   const addToShopping = (itemPrice:number):void => {
     setShoppingCart(itemPrice + shoppingCart);
