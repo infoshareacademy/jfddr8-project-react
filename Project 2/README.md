@@ -67,7 +67,7 @@ const users = [
   ];
 ```
 
-3. Gdy podany argument resourceUrl jest users i gdy niepoprawnie się wykona request to ma zwrócić success na false. (Promise.reject)
+3. Gdy podany argument resourceUrl to "users" i gdy niepoprawnie się wykona request to ma zwrócić success na false. (Promise.reject)
 
 ## Zadanie 6:
 
