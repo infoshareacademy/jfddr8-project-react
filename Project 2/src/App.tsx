@@ -1,45 +1,51 @@
-import './App.css';
-import { useState, useContext } from 'react'
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-  Navigate,
-} from "react-router-dom";
-import { Home } from './components/Home/Home';
-import { AuthContext } from './providers/Auth';
-import { Login } from './components/Login/Login';
+import "./App.css";
+import { useState, useContext } from "react";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+import  Login  from "./Components/Login";
+import  Home  from "./Components/Home";
+import { LoginStatus } from "./providers/Auth";
 
 function App() {
-  const {isLogged} = useContext(AuthContext);
-  const [basketValue, setBasketValue] = useState(0);
+  const { isLogged } = useContext(LoginStatus);
+  console.log(localStorage.getItem('user'))
 
-  const addToCart = (productValue) => {
-      setBasketValue(basketValue + productValue);
-  }
+  const [shoppingCart, setShoppingCart] = useState<number>(0);
+
+  const addToShopping = (itemPrice: number): void => {
+    setShoppingCart(itemPrice + shoppingCart);
+  };
 
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={
-            isLogged ? (
-              <Navigate to='/home' />
-            ) : (
-              <Navigate to='/login' />
-            )} 
-        />       
-        <Route path="/home" element={
-          <Home 
-            basketValue={basketValue}
-            addToCart={addToCart}
+      <div className="app">
+        <Routes>
+          <Route
+            path="/"
+            element={
+              isLogged ? <Navigate to="/home" /> : <Navigate to="/login" />
+            }
           />
-        }/>
-        <Route path="/login" element={
-          <Login />
-        }/>
-      </Routes>
+          <Route
+            path="/login"
+            element={isLogged ? <Navigate to="/home" /> : <Login />}
+          />
+          <Route
+            path="/home"
+            element={
+              isLogged ? (
+                <Home
+                  shoppingCart={shoppingCart}
+                  addToShopping={addToShopping}
+                  className="home.element"
+                />
+              ) : (
+                <Navigate to="/login" />
+              )
+            }
+          />
+        </Routes>
+      </div>
     </BrowserRouter>
-    
   );
 }
 

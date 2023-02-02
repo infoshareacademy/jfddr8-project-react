@@ -1,27 +1,29 @@
-import { createContext, useState } from "react";
-import { useEffect } from "react";
-type AuthContextType = {
+import React, { useEffect, useState } from "react";
+
+type LoginStatusType = {
   isLogged: boolean;
-  setIsLogged: (isLogged: boolean) => void
-}
-type AuthProviderProps = {
-  children: React.ReactNode;
-}
+  setIsLogged: (isLogged: boolean) => void;
+};
 
-export const AuthContext = createContext<AuthContextType>({} as AuthContextType);
+type PropsWithChildren = {
+  children: JSX.Element;
+};
 
-export const AuthProvider = ({ children }: AuthProviderProps) => {
+export const LoginStatus = React.createContext<LoginStatusType>(
+  {} as LoginStatusType
+);
+const Auth = (props: PropsWithChildren): JSX.Element => {
   const [isLogged, setIsLogged] = useState(false);
 
-  useEffect(() => {
-    if (localStorage.getItem('user')) {
-      setIsLogged(true);
-    }
-  }, [])
+  useEffect((): void => {
+    localStorage.getItem("user") && setIsLogged(true);
+  }, []);
 
   return (
-    <AuthContext.Provider value={{isLogged, setIsLogged}}>
-      {children}
-    </AuthContext.Provider>
+    <LoginStatus.Provider value={{ isLogged, setIsLogged }}>
+      {props.children}
+    </LoginStatus.Provider>
   );
 };
+
+export default Auth;
