@@ -1,18 +1,37 @@
 import React, { useState, useContext } from "react";
 import { LoginStatus } from "../Providers/Auth";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "./firebase";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut
+} from "firebase/auth";
+import { auth } from "../firebase";
 
-
-
-function Login():JSX.Element {
+function Login(): JSX.Element {
   const [login, setLogin] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
   const { setIsLogged } = useContext(LoginStatus);
 
-  const handleSubmit = (e:React.FormEvent<HTMLFormElement>) => {
+  const signIn = async ():Promise<void>=>{
+    try {
+      await signInWithEmailAndPassword(auth, login, password);
+      setIsLogged(true);
+    } catch {}
+  }
+
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    localStorage.setItem("user", login);
-    setIsLogged(true);
+    try {
+      await createUserWithEmailAndPassword(auth, login, password);
+      setIsLogged(true);
+    } catch ({ code }) {
+      if (code === "auth/email-already-in-use") {
+        signIn();
+      } else {
+        console.log(code);
+      }
+    }
   };
 
   return (
@@ -22,6 +41,7 @@ function Login():JSX.Element {
         name="login"
         id="login"
         placeholder="login"
+        value={login}
         onChange={(e) => setLogin(e.target.value)}
       />
       <input
@@ -29,6 +49,8 @@ function Login():JSX.Element {
         name="password"
         id="password"
         placeholder="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
       />
       <button>Login</button>
     </form>

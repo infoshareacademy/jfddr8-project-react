@@ -13,7 +13,7 @@ function App() {
   const [shoppingCart, setShoppingCart] = useState<number>(0);
 
   const addToShopping = (itemPrice:number):void => {
-    setShoppingCart(itemPrice + shoppingCart);
+    setShoppingCart(itemPrice + shoppingCart)
   };
 
   return (
@@ -48,6 +48,5 @@ function App() {
       </div>
     </BrowserRouter>
   );
-}
-
+};
 export default App;

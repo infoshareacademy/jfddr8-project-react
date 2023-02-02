@@ -1,5 +1,7 @@
-import { LoginStatus } from "../Providers/Auth";
+import Auth, { LoginStatus } from "../Providers/Auth";
 import { useContext } from "react";
+import { signOut } from "firebase/auth";
+import { auth } from "../firebase";
 
 type shoppingCartType = {
   shoppingCart:number
@@ -9,7 +11,7 @@ function ShoppingCart({ shoppingCart }:shoppingCartType) {
   const { setIsLogged } = useContext(LoginStatus);
   const handleLogOut = ():void => {
     setIsLogged(false);
-    localStorage.removeItem("user");
+    signOut(auth);
   };
 
   return (
