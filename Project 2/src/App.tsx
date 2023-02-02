@@ -7,6 +7,7 @@ import { LoginStatus } from "./providers/Auth";
 
 function App() {
   const { isLogged } = useContext(LoginStatus);
+  console.log(localStorage.getItem("user"));
 
   const [shoppingCart, setShoppingCart] = useState<number>(0);
 
