@@ -36,3 +36,20 @@ dane do wyświetlenia na liście znajdują się w pliku `src/data/products.js`
 7. Obok koszyka dodaj przycisk `Log out`, ktory spowoduje przestawienie `isLogged` na `false`, wyczyszczenie localStorage i przekierowanie na `/login`.
 
 Podsumowując, lista produktów i dodawanie do koszyka mają być dostępne tylko dla zalogowanego uzytkownika (czyli istniejącego wpisu `user` w localStorage).
+
+## Zadanie 4:
+
+Napisz e2e test w cypress testujący formularz do logowania.y
+
+3. Gdy podany argument resourceUrl to "users" i gdy niepoprawnie się wykona request to ma zwrócić success na false. (Promise.reject)
+
+## Zadanie 6:
+
+Firebase.
+
+1. Dodaj firebase do aplikacji.
+
+2. Skonfiguruj firebase w taki sposób, żeby dodać autentykację oraz autoryzację w aplikacji.
+
+3. Podłącz autoryzację z firebase do aplikacji i teraz zamiast przechowywać dane użytkownika w localStorage to przechowuj je po stronie firebase (1 formularz logowania który od razu załatwi nam rejestrację oraz zalogowanie użytkownika - jeśli użytkownik jest już zarejestrowany to przeprowadzamy tylko logowanie - można tu skorzystać z odpowiedzi z firebase w momencie, gdy próbujemy zarejestrować istniejącego użytkownika - 'auth/email-already-in-use').
+

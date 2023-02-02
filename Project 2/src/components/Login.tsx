@@ -31,7 +31,7 @@ export const Login = (): JSX.Element => {
         <>
         <h1>Please log in:</h1>
         <form onSubmit={e => { handleSubmit(e) }}>
-        <label>Login:</label>
+        <label>Login</label>
         <br />
         <input 
           name='login' 
@@ -40,7 +40,7 @@ export const Login = (): JSX.Element => {
           onChange={e => setUsername(e.target.value)}
         />
         <br/>
-        <label>Password:</label>
+        <label>Password</label>
         <br />
         <input 
           name='password' 
