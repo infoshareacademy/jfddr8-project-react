@@ -14,7 +14,7 @@ function App() {
   const {isLogged} = useContext(AuthContext);
   const [basketValue, setBasketValue] = useState(0);
 
-  const addToCart = (productValue) => {
+  const addToCart = (productValue: number) => {
       setBasketValue(basketValue + productValue);
   }
 

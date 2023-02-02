@@ -4,7 +4,13 @@ import { ProductList } from "../ProductList/ProductList";
 import { AuthContext } from "../../providers/Auth";
 import { useNavigate } from "react-router-dom";
 
-export const Home = ({ basketValue, addToCart }) => {
+type HomeProps = {
+    basketValue: number;
+    addToCart: (productValue: number) => void;
+  }
+
+export const Home = ({ basketValue, addToCart }: HomeProps): JSX.Element => {
+
     const { isLogged, setIsLogged } = useContext(AuthContext);
     const navigate = useNavigate();
 

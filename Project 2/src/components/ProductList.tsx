@@ -1,14 +1,21 @@
 // odpowiedzialny za wyświetlenie listy produktów
 import products from "../../data/products";
 import { ProductListItem } from "../ProductListItem/ProductListItem";
+import type AddToCartFunctionType
 
-export const ProductList = ( {addToCart} ) => {
+type AddToCart = {
+  addToCart: (productValue: number) => void;
+}
+
+export const ProductList = ( {addToCart}: AddToCart ) => {
 
 
     return (
-          products.map((item) => (
+      <>
+          {products.map((item) => (
             <ProductListItem key={item.id} item={item} addToCart={addToCart} />
            )
-          )
+          )}
+      </>
     )
 }

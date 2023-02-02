@@ -2,9 +2,11 @@ import { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/Auth";
 
-export const Login = () => {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
+
+export const Login = (): JSX.Element => {
+    const [username, setUsername] = useState<string>('');
+    const [password, setPassword] = useState<string>('');
+
     const { isLogged, setIsLogged } = useContext(AuthContext);
     const navigate = useNavigate();
 
@@ -14,7 +16,7 @@ export const Login = () => {
         }
     }, [isLogged, navigate]);
 
-    const handleSubmit= (e) => {
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (!username || !password) {
             alert('Please provide user credentials');

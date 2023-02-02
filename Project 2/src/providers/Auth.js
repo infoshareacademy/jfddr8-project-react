@@ -1,9 +1,18 @@
 import { createContext, useState } from "react";
 import { useEffect } from "react";
 
-export const AuthContext = createContext({});
+type ContextType = {
+  isLogged: boolean;
+  setIsLogged: (isLogged: boolean) => void;
+}
 
-export const AuthProvider = ({ children }) => {
+type ProviderProps = {
+  children: React.ReactNode
+}
+
+export const AuthContext = createContext({} as ContextType);
+
+export const AuthProvider = ({ children }: ProviderProps): JSX.Element => {
   const [isLogged, setIsLogged] = useState(false);
 
   useEffect(() => {
