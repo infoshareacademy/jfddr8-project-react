@@ -55,6 +55,7 @@ Przetestuj jednostkowo za pomocą `jest` funkcję fetchItems (z pliku src/u
 1. Gdy podany argument resourceUrl jest inny niż “users” - mamy wyjść przedwcześnie z funkcji.
 
 2. Gdy podany argument resourceUrl to “users” i gdy poprawnie się wykona request to ma zwrócić userów oraz success. (Promise.resolve) - skorzystaj z zamockowanej odpowiedzi:
+
 ```
 const users = [
     {
@@ -77,5 +78,4 @@ Firebase.
 
 2. Skonfiguruj firebase w taki sposób, żeby dodać autentykację oraz autoryzację w aplikacji.
 
-3. Podłącz autoryzację z firebase do aplikacji i teraz zamiast przechowywać dane użytkownika w localStorage to przechowuj je po stronie firebase (1 formularz logowania który od razu załatwi nam rejestrację oraz zalogowanie użytkownika - jeśli użytkownik jest już zarejestrowany to przeprowadzamy tylko logowanie - można tu skorzystać z odpowiedzi z firebase w momencie, gdy próbujemy zarejestrować istniejącego użytkownika - 'auth/email-already-in-use').
-
+3. Podłącz autoryzację z firebase do aplikacji i teraz zamiast przechowywać dane użytkownika w localStorage to przechowuj je po stronie firebase (1 formularz logowania który od razu załatwi nam rejestrację oraz zalogowanie użytkownika - jeśli użytkownik jest już zarejestrowany to przeprowadzamy tylko logowanie - można tu skorzystać z odpowiedzi z firebase w momencie, gdy próbujemy zarejestrować istniejącego użytkownika - ''auth/email-already-in-use).
