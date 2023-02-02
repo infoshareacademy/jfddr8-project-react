@@ -1,15 +1,21 @@
 import type {} from "cypress";
-
-describe("login", () => {
+describe("login testing", () => {
   let user;
   before(() => {
     cy.fixture("user.json").then((userData) => {
       user = userData;
     });
   });
-
-  it("Login user", () => {
+  it("login testing", () => {
+    const { login, password } = user;
     cy.visit("http://localhost:3000/login");
-    cy.contains("label", "");
+    cy.get('input[placeholder="login"]').type(login);
+    cy.get('input[placeholder="password"]').type(password);
+    cy.contains("Login").click();
+    cy.url().should("include", "/home");
+    cy.getAllLocalStorage().then((data) => {
+      expect(data).to.deep.equal({ "http://localhost:3000": { user: login } });
+    });
+    cy.contains(/^Price/).should("be.visible");
   });
 });
