@@ -36,3 +36,46 @@ dane do wyświetlenia na liście znajdują się w pliku `src/data/products.js`
 7. Obok koszyka dodaj przycisk `Log out`, ktory spowoduje przestawienie `isLogged` na `false`, wyczyszczenie localStorage i przekierowanie na `/login`.
 
 Podsumowując, lista produktów i dodawanie do koszyka mają być dostępne tylko dla zalogowanego uzytkownika (czyli istniejącego wpisu `user` w localStorage).
+
+## Zadanie 4:
+
+Napisz e2e test w cypress testujący formularz do logowania.
+https://docs.cypress.io/guides/component-testing/react/quickstart
+
+1. Stwórz sobie w folderze fixtures plik user.json w którym ma być testowy login i hasło.
+
+2. Stwórz plik Login.cy.ts w katalogu e2e, przypisz user.json do wewnętrznej zmiennej user.
+
+3. Napisz warunki poprawnego logowania - wizyta na stronie /login, przechwycenie inputów, przekazanie im testowych danych, przechwycenie i kliknięcie buttona do logowania. Sprawdzenie czy nowy url to “/home”. Sprawdzenie czy w localStorage znajduje się user o wartości z inputa login (to.deep.equal). Sprawdzenie, czy jest widoczny koszyk.
+
+## Zadanie 5:
+
+Przetestuj jednostkowo za pomocą `jest` funkcję fetchItems (z pliku src/utils/fetchItems.ts). Powinny się znaleźć 3 przypadki testowe:
+
+1. Gdy podany argument resourceUrl jest inny niż “users” - mamy wyjść przedwcześnie z funkcji.
+
+2. Gdy podany argument resourceUrl to “users” i gdy poprawnie się wykona request to ma zwrócić userów oraz success. (Promise.resolve) - skorzystaj z zamockowanej odpowiedzi:
+```
+const users = [
+    {
+      id: 1,
+      email: "test@test.com",
+      first_name: "test",
+      last_name: "test",
+      avatar: "avatar",
+    },
+  ];
+```
+
+3. Gdy podany argument resourceUrl to "users" i gdy niepoprawnie się wykona request to ma zwrócić success na false. (Promise.reject)
+
+## Zadanie 6:
+
+Firebase.
+
+1. Dodaj firebase do aplikacji.
+
+2. Skonfiguruj firebase w taki sposób, żeby dodać autentykację oraz autoryzację w aplikacji.
+
+3. Podłącz autoryzację z firebase do aplikacji i teraz zamiast przechowywać dane użytkownika w localStorage to przechowuj je po stronie firebase (1 formularz logowania który od razu załatwi nam rejestrację oraz zalogowanie użytkownika - jeśli użytkownik jest już zarejestrowany to przeprowadzamy tylko logowanie - można tu skorzystać z odpowiedzi z firebase w momencie, gdy próbujemy zarejestrować istniejącego użytkownika - 'auth/email-already-in-use').
+
