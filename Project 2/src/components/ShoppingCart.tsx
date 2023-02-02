@@ -1,12 +1,14 @@
 import { AuthContext } from '../providers/Auth';
 import { useContext } from 'react';
+import { signOut } from 'firebase/auth';
+import { auth } from '../firebase';
 
-export const ShoppingCart: React.FC<{price: number}> = (props) => {
+export const ShoppingCart: React.FC<{ price: number }> = (props) => {
 	const { setIsLogged } = useContext(AuthContext);
 
 	const logoutHandler = () => {
 		setIsLogged(false);
-		localStorage.removeItem('user');
+		signOut(auth);
 	};
 
 	return (

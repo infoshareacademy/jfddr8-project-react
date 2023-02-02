@@ -1,14 +1,13 @@
 import { ProductListItem } from './ProductListItem';
-import { useState } from 'react';
 
 export const ProductList: React.FC<{
-	products: any
+	products: any;
 	sumPrice: (n: number) => void;
 }> = (props) => {
 	return (
 		<div>
 			<h2>Product List</h2>
-			<p>
+			<div>
 				{props.products.map((el: any) => (
 					<ProductListItem
 						key={el.id}
@@ -19,7 +18,7 @@ export const ProductList: React.FC<{
 						sumPrice={props.sumPrice}
 					/>
 				))}
-			</p>
+			</div>
 		</div>
 	);
 };

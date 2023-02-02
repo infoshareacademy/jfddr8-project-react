@@ -1,19 +1,39 @@
 import React, { useState, useContext } from 'react';
 import { AuthContext } from '../providers/Auth';
+import {
+	signInWithEmailAndPassword,
+	createUserWithEmailAndPassword,
+} from 'firebase/auth';
+import { auth } from '../firebase';
+import { useNavigate } from 'react-router-dom';
 
 export const Login = (): JSX.Element => {
 	const [login, setLogin] = useState<string>('');
 	const [password, setPassword] = useState('');
 	const { setIsLogged } = useContext(AuthContext);
+	const navigate = useNavigate();
 
-	const handleSubmit = (event: React.FormEvent): void => {
+	const signIn = async (): Promise<void> => {
+		try {
+			await signInWithEmailAndPassword(auth, login, password)
+			setIsLogged(true)
+		} catch ({code}) {
+			console.log(code);
+		}
+	}
+
+	const handleSubmit = async (event: React.FormEvent) => {
 		event.preventDefault();
-		if (!login || !password) {
-			alert('wpisz login i hasło');
-			return;
-		} else {
-			localStorage.setItem('user', login);
-			setIsLogged(true);
+		try {
+			await createUserWithEmailAndPassword(auth, login, password);
+			setIsLogged(true)
+			navigate('/home');
+		} catch ({code}) {
+			if (code === 'auth/email-already-in-use') {
+				signIn()
+			} else {
+				console.log(code);
+			}
 		}
 	};
 

@@ -1,15 +1,26 @@
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
+
 import { ProductsData } from './data/products';
 import './App.css';
 import { Home } from './components/Home';
 import { Login } from './components/Login';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthContext } from './providers/Auth';
+import {
+	signInWithEmailAndPassword,
+	signOut,
+	onAuthStateChanged,
+	createUserWithEmailAndPassword,
+  } from "firebase/auth";
+  import { auth } from "./firebase";
 
 function App() {
 	const [price, setPrice] = useState<number>(0);
+	const { isLogged, setIsLogged } = useContext(AuthContext);
 
-	const { isLogged } = useContext(AuthContext);
+	useEffect(() => {
+
+	}, [])
 
 	const SumPrice = (currentProductPrice: number): void => {
 		setPrice(price + currentProductPrice);
