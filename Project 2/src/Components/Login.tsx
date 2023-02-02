@@ -16,7 +16,9 @@ function Login(): JSX.Element {
     try {
       await signInWithEmailAndPassword(auth, login, password);
       setIsLogged(true);
-    } catch {}
+    } catch (error){
+      console.log(error)
+    }
   }
 
 
