@@ -1,9 +1,16 @@
 import { createContext, useState } from "react";
 import { useEffect } from "react";
+type AuthContextType = {
+  isLogged: boolean;
+  setIsLogged: (isLogged: boolean) => void
+}
+type AuthProviderProps = {
+  children: React.ReactNode;
+}
 
-export const AuthContext = createContext({});
+export const AuthContext = createContext<AuthContextType>({} as AuthContextType);
 
-export const AuthProvider = ({ children }) => {
+export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [isLogged, setIsLogged] = useState(false);
 
   useEffect(() => {
