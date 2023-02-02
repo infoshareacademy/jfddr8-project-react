@@ -1,5 +1,5 @@
 import ProductsListItem from "./ProductsListItem";
-import products from "../data/products";
+import {ProductsData} from "../data/products";
 
 type productListProps = {
   addToShopping: (itemPrice: number) => void;
@@ -7,7 +7,7 @@ type productListProps = {
 function ProductList({ addToShopping }: productListProps) {
   return (
     <div>
-      {products.map((e) => (
+      {ProductsData.map((e: any) => (
         <ProductsListItem
           addToShopping={addToShopping}
           key={e.id}

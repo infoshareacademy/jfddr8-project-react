@@ -1,9 +1,12 @@
 import "./App.css";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import Login from "./Components/Login";
 import Home from "./Components/Home";
 import { LoginStatus } from "./providers/Auth";
+import { onAuthStateChanged } from "firebase/auth";
+import { firebaseAuth } from ".";
+import { useNavigate } from "react-router-dom";
 
 function App() {
   const { isLogged } = useContext(LoginStatus);
@@ -12,10 +15,27 @@ function App() {
 
   const addToShopping = (itemPrice: number): void => {
     setShoppingCart(itemPrice + shoppingCart);
-  };
+   };
+
+   const navigate = useNavigate();
+   // const [isLoading, setIsLoading] = useState(true);
+   
+   const { setIsLogged } = useContext(LoginStatus);
+   
+   useEffect(() => {
+   const unsubscribe = onAuthStateChanged(firebaseAuth, (login) => {
+    setIsLogged(true);
+
+     if(login) {
+       navigate('/home');
+     }
+     
+    })
+   return () => unsubscribe();
+   }, [setIsLogged]);
 
   return (
-    <BrowserRouter>
+    
       <div className="app">
         <Routes>
           <Route
@@ -44,7 +64,6 @@ function App() {
           />
         </Routes>
       </div>
-    </BrowserRouter>
   );
 }
 
