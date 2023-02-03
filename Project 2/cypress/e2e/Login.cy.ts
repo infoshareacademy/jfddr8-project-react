@@ -2,7 +2,7 @@ import cypress from "cypress"
 
 
 describe('Test logowania do strony', ()=>{
-    let user;
+    let user:any;
     before(()=>{
         cy.fixture("user.json").then((e)=>{user=e})
     })

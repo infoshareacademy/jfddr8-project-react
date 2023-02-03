@@ -2,8 +2,7 @@ import React, { useState, useContext } from "react";
 import { LoginStatus } from "../Providers/Auth";
 import {
   createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  signOut
+  signInWithEmailAndPassword
 } from "firebase/auth";
 import { auth } from "../firebase";
 
@@ -25,7 +24,8 @@ function Login(): JSX.Element {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      await createUserWithEmailAndPassword(auth, login, password);
+      const {user} = await createUserWithEmailAndPassword(auth, login, password);
+    
       setIsLogged(true);
     } catch ({ code }) {
       if (code === "auth/email-already-in-use") {
