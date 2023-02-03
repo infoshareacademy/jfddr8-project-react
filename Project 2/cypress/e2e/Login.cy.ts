@@ -1,4 +1,4 @@
-/// <reference types="cypress" />
+import type {} from "cypress"
 
     let user: any;
 before(() => {

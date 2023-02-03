@@ -6,27 +6,50 @@ import Home from "./Components/Home";
 import { LoginStatus } from "./Providers/Auth";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase";
+import { firebaseDb } from "./firebase";
+import { getDoc, doc, setDoc} from "firebase/firestore";
+
+
 
 function App() {
   const { isLogged, setIsLogged } = useContext(LoginStatus);
-
+  const [user, setUser] = useState<string>("");
   const [shoppingCart, setShoppingCart] = useState<number>(0);
 
-  const addToShopping = (itemPrice: number):void => {
-    setShoppingCart(itemPrice + shoppingCart);
-  };
 
-  
+  const addToShopping = async (itemPrice: number): Promise<void> => {
+    try {
+      await setDoc(doc(firebaseDb, "shoppingCart", user), {
+        shoppingCartValue: itemPrice + shoppingCart,
+      });
+      setShoppingCart(itemPrice + shoppingCart);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
+    onAuthStateChanged(auth, async (user) => {
       if (user) {
+        setUser(`${user.email}`);
         setIsLogged(true);
+        try {
+          const cartValueSnapshot = await getDoc(
+            doc(firebaseDb, "shoppingCart", `${user.email}`)
+          );
+          if (cartValueSnapshot.exists()) {
+            const { shoppingCartValue } = cartValueSnapshot.data();
+            setShoppingCart(shoppingCartValue);
+          }
+        } catch (error) {
+          console.log(error);
+        }
       } else {
         setIsLogged(false);
+        setShoppingCart(0);
       }
     });
-  }, [setIsLogged]);
-
+  }, [setIsLogged, setShoppingCart]);
+  
   return (
     <BrowserRouter>
       <div className="app">
