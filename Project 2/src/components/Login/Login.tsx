@@ -16,27 +16,32 @@ export const Login = (): JSX.Element => {
         }
     }, [isLogged, navigate]);
 
+    const signIn = async (): Promise<void> => {
+      try {
+          await signInWithEmailAndPassword(firebaseAuth, username, password)
+          setIsLogged(true)
+      } catch ({code}) {
+          console.log(code);
+      }
+  }
+
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (!username || !password) {
             alert('Please provide user credentials');
             return;
         } else {
-          // signInWithEmailAndPassword(firebaseAuth, username, password).then(
-          //     (userCredential) => {
-          //       const user = userCredential.user;
-          //       navigate("/home");
-          //       console.log(user);
-          //       setIsLogged(true);
-          //     }
-          //   )
           try {
             await createUserWithEmailAndPassword(firebaseAuth, username, password);
             setIsLogged(true)
           }
-          catch(error){
-            console.log(error)
-          }
+          catch ({code}) {
+            if (code === 'auth/email-already-in-use') {
+                signIn()
+            } else {
+                console.log(code);
+            }
+        }
         }
       }
 

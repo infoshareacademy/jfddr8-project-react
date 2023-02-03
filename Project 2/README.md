@@ -79,3 +79,7 @@ Firebase.
 
 3. Podłącz autoryzację z firebase do aplikacji i teraz zamiast przechowywać dane użytkownika w localStorage to przechowuj je po stronie firebase (1 formularz logowania który od razu załatwi nam rejestrację oraz zalogowanie użytkownika - jeśli użytkownik jest już zarejestrowany to przeprowadzamy tylko logowanie - można tu skorzystać z odpowiedzi z firebase w momencie, gdy próbujemy zarejestrować istniejącego użytkownika - 'auth/email-already-in-use').
 
+4. Z poziomu App.tsx ustawiamy listener sprawdzający czy użytkownik jest zalogowany i na tej podstawie update'ujemy context. Pozwoli nam to utrzymać zalogowanego użytkownika po odświeżeniu przeglądarki.
+
+5. Następnie przechowywanie ceny produktów usuwamy z localStorage i dodajemy do przechowania w pamięci firebase produktów per użytkownik.
+
