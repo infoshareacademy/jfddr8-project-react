@@ -1,6 +1,5 @@
 import products from "../../data/products";
 import { ProductListItem } from "../ProductListItem/ProductListItem";
-import type AddToCartFunctionType
 
 type AddToCart = {
   addToCart: (productValue: number) => void;

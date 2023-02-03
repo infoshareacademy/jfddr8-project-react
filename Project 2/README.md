@@ -40,7 +40,7 @@ Podsumowując, lista produktów i dodawanie do koszyka mają być dostępne tylk
 ## Zadanie 4:
 
 Napisz e2e test w cypress testujący formularz do logowania.
-https://docs.cypress.io/guides/component-testing/react/quickstart
+https://docs.cypress.io/guides/conpm install cypress -Dmponent-testing/react/quickstart
 
 1. Stwórz sobie w folderze fixtures plik user.json w którym ma być testowy login i hasło.
 
