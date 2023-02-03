@@ -3,6 +3,8 @@ import { ShoppingCart } from "../ShoppingCart/ShoppingCart";
 import { ProductList } from "../ProductList/ProductList";
 import { AuthContext } from "../../providers/Auth";
 import { useNavigate } from "react-router-dom";
+import { firebaseAuth } from "../../firebase";
+import { signOut } from "firebase/auth";
 
 export const Home = ({ basketValue, addToCart }) => {
     const { isLogged, setIsLogged } = useContext(AuthContext);
@@ -15,8 +17,10 @@ export const Home = ({ basketValue, addToCart }) => {
     }, [isLogged, navigate]);
 
     const handleLogout = () => {
-        localStorage.clear();
-        setIsLogged(false);
+        signOut(firebaseAuth).then(()=>{
+            setIsLogged(false)
+            console.log(isLogged)
+        })
     }
 
     return (

@@ -26,15 +26,21 @@ export const Login = () => {
         await createUserWithEmailAndPassword(firebaseAuth, username, password);
         setIsLogged(true);
       } catch (error) {
-        console.log(error);
-        signInWithEmailAndPassword(firebaseAuth, username, password).then(
-          (userCredential) => {
-            const user = userCredential.user;
-            navigate("/home");
-            console.log(user);
-            setIsLogged(true);
-          }
-        );
+        console.log(error.message);
+        if (
+          error.message ===
+          "Firebase: Password should be at least 6 characters (auth/weak-password)."
+        ) {
+          alert("hasło musi mieć co najmniej 6 znaków");
+        } else {
+          signInWithEmailAndPassword(firebaseAuth, username, password).then(
+            (userCredential) => {
+              const user = userCredential.user;
+              console.log(user);
+              setIsLogged(true);
+            }
+          );
+        }
       }
     }
   };
