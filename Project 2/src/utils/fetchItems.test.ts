@@ -1,4 +1,3 @@
-import { error } from 'console';
 import { fetchItems } from './fetchItems';
 
 describe('fetchItems', () => {
@@ -28,12 +27,14 @@ describe('fetchItems', () => {
 		expect(fetchSpy).toBeCalledTimes(1);
 		expect(response).toEqual({ resource: users, success: true });
 	});
-    it('it returnes promise reject', async () => {
-        fetchSpy.mockImplementationOnce(() => Promise.reject({
-            json: () => Promise.reject({data: users}),
-        } as Response))
-        const response = await fetchItems("users");
-        expect(response).toEqual({success:false})
-        expect(fetchSpy).toBeCalledTimes(1);
-    })
+	it('it returnes promise reject', async () => {
+		fetchSpy.mockImplementationOnce(() =>
+			Promise.reject({
+				json: () => Promise.reject({ data: users }),
+			} as Response)
+		);
+		const response = await fetchItems('users');
+		expect(response).toEqual({ success: false });
+		expect(fetchSpy).toBeCalledTimes(1);
+	});
 });

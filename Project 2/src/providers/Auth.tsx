@@ -15,6 +15,7 @@ export const AuthContext = React.createContext<AuthContextObj>(
 
 export const Auth = (props: PropsChildren): JSX.Element => {
 	const [isLogged, setIsLogged] = useState(false);
+	
 
 	useEffect((): void => {
 		localStorage.getItem('user') && setIsLogged(true);
