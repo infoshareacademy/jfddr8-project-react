@@ -78,4 +78,4 @@ Firebase.
 
 2. Skonfiguruj firebase w taki sposób, żeby dodać autentykację oraz autoryzację w aplikacji.
 
-3. Podłącz autoryzację z firebase do aplikacji i teraz zamiast przechowywać dane użytkownika w localStorage to przechowuj je po stronie firebase (1 formularz logowania który od razu załatwi nam rejestrację oraz zalogowanie użytkownika - jeśli użytkownik jest już zarejestrowany to przeprowadzamy tylko logowanie - można tu skorzystać z odpowiedzi z firebase w momencie, gdy próbujemy zarejestrować istniejącego użytkownika - ''auth/email-already-in-use).
+3. Podłącz autoryzację z firebase do aplikacji i teraz zamiast przechowywać dane użytkownika w localStorage to przechowuj je po stronie firebase (1 formularz logowania który od razu załatwi nam rejestrację oraz zalogowanie użytkownika - jeśli użytkownik jest już zarejestrowany to przeprowadzamy tylko logowanie - można tu skorzystać z odpowiedzi z firebase w momencie, gdy próbujemy zarejestrować istniejącego użytkownika - 'auth/email-already-in-use').
