@@ -1,15 +1,40 @@
 import "./App.css";
 import ProductsList from "./components/ProductsList";
 import ShoppingCart from "./components/ShoppingCart";
-import { useState } from "react";
+import { useState, useEffect, useContext } from "react";
 import ShoppingCartContext from "./Context/ShoppingCartContext";
 import Login from "./components/Login";
 import Home from "./components/Home";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Auth from "./Context/Auth";
+import { auth } from "./firebase";
+import {
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged,
+  createUserWithEmailAndPassword,
+} from "firebase/auth";
+import { useNavigate } from "react-router-dom";
+
 function App() {
   const [price, setPrice] = useState(0);
   const [isLogged, setIsLogged] = useState(false);
+  // const { setIsLogged } = useContext(Auth);
+  // const navigate = useNavigate();
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      console.log(user);
+
+      if (user) {
+        setIsLogged(true);
+        // navigate("/home");
+      } else {
+        setIsLogged(false);
+        // navigate("/login");
+      }
+    });
+  }, [setIsLogged]);
 
   return (
     <div>

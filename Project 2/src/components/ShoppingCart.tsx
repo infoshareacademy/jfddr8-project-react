@@ -1,6 +1,8 @@
 import { useContext } from "react";
 import ShoppingCartContext from "../Context/ShoppingCartContext";
 import Auth from "../Context/Auth";
+import { auth } from "../firebase";
+import { signOut } from "firebase/auth";
 
 function ShoppingCart() {
   const { price } = useContext(ShoppingCartContext);
@@ -8,8 +10,9 @@ function ShoppingCart() {
 
   function Logout() {
     setIsLogged(false);
-    console.log(isLogged);
-    localStorage.removeItem("user");
+    signOut(auth);
+
+    // localStorage.removeItem("user");
   }
 
   return (
