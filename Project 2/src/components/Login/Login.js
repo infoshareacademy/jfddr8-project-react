@@ -2,7 +2,7 @@ import { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/Auth";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { firebaseAuth } from "../../firebase";
+import { firebaseAuth, firebaseDb } from "../../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 
 export const Login = () => {
@@ -23,8 +23,13 @@ export const Login = () => {
       alert("Please provide user credentials");
     } else {
       try {
-        await createUserWithEmailAndPassword(firebaseAuth, username, password);
-        setIsLogged(true);
+        await createUserWithEmailAndPassword(firebaseAuth, username, password).then(cred => {
+          return firebaseDb.collection('users').doc(cred.user.uid).set({
+            price: 
+          })
+          setIsLogged(true);
+        })
+        
       } catch (error) {
         console.log(error.message);
         if (
