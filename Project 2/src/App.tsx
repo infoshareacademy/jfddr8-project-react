@@ -1,19 +1,36 @@
 import "./App.css";
-import { useState, useContext } from "react";
-import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+import { useState, useContext, useEffect } from "react";
+import {
+  BrowserRouter,
+  Route,
+  Routes,
+  Navigate,
+  useNavigate,
+} from "react-router-dom";
 import Login from "./Components/Login";
 import Home from "./Components/Home";
 import { LoginStatus } from "./providers/Auth";
+import { onAuthStateChanged } from "firebase/auth";
+import { firebaseAuth } from ".";
 
 function App() {
   const { isLogged } = useContext(LoginStatus);
-  console.log(localStorage.getItem("user"));
-
   const [shoppingCart, setShoppingCart] = useState<number>(0);
+  const { setIsLogged } = useContext(LoginStatus);
 
   const addToShopping = (itemPrice: number): void => {
     setShoppingCart(itemPrice + shoppingCart);
   };
+
+  useEffect(() => {
+    onAuthStateChanged(firebaseAuth, (user) => {
+      if (user) {
+        setIsLogged(true);
+      } else {
+        setIsLogged(false);
+      }
+    });
+  }, [setIsLogged]);
 
   return (
     <BrowserRouter>

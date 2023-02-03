@@ -5,19 +5,20 @@ import {
 import React, { useState, useContext } from "react";
 import { LoginStatus } from "../providers/Auth";
 import { firebaseAuth } from "..";
-import { useNavigate } from "react-router-dom";
+
+// import { useNavigate } from "react-router-dom";
 
 function Login(): JSX.Element {
   const [login, setLogin] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const { setIsLogged } = useContext(LoginStatus);
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  const handleLogin = async () => {
+  const handleLogin = async (): Promise<void> => {
     try {
       await signInWithEmailAndPassword(firebaseAuth, login, password);
-      navigate("/home");
+      // navigate("/home");
       setIsLogged(true);
     } catch (error) {
       console.log(error);
@@ -29,7 +30,7 @@ function Login(): JSX.Element {
     try {
       await createUserWithEmailAndPassword(firebaseAuth, login, password);
       setIsLogged(true);
-      navigate("/home");
+      // navigate("/home");
     } catch ({ code }) {
       if (code === "auth/email-already-in-use") {
         handleLogin();
