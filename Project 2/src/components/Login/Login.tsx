@@ -1,12 +1,12 @@
 import { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/Auth";
-
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { firebaseAuth } from "../../firebase"
 
 export const Login = (): JSX.Element => {
     const [username, setUsername] = useState<string>('');
     const [password, setPassword] = useState<string>('');
-
     const { isLogged, setIsLogged } = useContext(AuthContext);
     const navigate = useNavigate();
 
@@ -16,14 +16,27 @@ export const Login = (): JSX.Element => {
         }
     }, [isLogged, navigate]);
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (!username || !password) {
             alert('Please provide user credentials');
             return;
         } else {
-            localStorage.setItem('user', username);
-            setIsLogged(true);
+          // signInWithEmailAndPassword(firebaseAuth, username, password).then(
+          //     (userCredential) => {
+          //       const user = userCredential.user;
+          //       navigate("/home");
+          //       console.log(user);
+          //       setIsLogged(true);
+          //     }
+          //   )
+          try {
+            await createUserWithEmailAndPassword(firebaseAuth, username, password);
+            setIsLogged(true)
+          }
+          catch(error){
+            console.log(error)
+          }
         }
       }
 
