@@ -18,7 +18,8 @@ function Login(): JSX.Element {
   const { setIsLogged } = useContext(Auth);
   const signIn = async (): Promise<void> => {
     try {
-      await signInWithEmailAndPassword;
+      console.log("proba1");
+      await signInWithEmailAndPassword(auth, login, password);
       setIsLogged(true);
     } catch {}
   };

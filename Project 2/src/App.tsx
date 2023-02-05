@@ -7,14 +7,16 @@ import Login from "./components/Login";
 import Home from "./components/Home";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Auth from "./Context/Auth";
-import { auth } from "./firebase";
+import { auth } from "../src/firebase";
 import {
   signInWithEmailAndPassword,
   signOut,
   onAuthStateChanged,
   createUserWithEmailAndPassword,
 } from "firebase/auth";
+import { db } from "../src/firebase";
 import { useNavigate } from "react-router-dom";
+import { collection, getDoc, doc } from "firebase/firestore";
 
 function App() {
   const [price, setPrice] = useState(0);
@@ -23,15 +25,26 @@ function App() {
   // const navigate = useNavigate();
 
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      console.log(user);
-
+    onAuthStateChanged(auth, async (user) => {
       if (user) {
         setIsLogged(true);
         // navigate("/home");
+        console.log(user);
+        try {
+          const cartValueSnapShot = await getDoc(
+            doc(db, "Koszyk", "${user.email}")
+          );
+          if (cartValueSnapShot.exists()) {
+            const { CartValue } = cartValueSnapShot.data();
+            setPrice(CartValue);
+          } else setPrice(0);
+        } catch (error) {
+          console.log(error);
+        }
       } else {
         setIsLogged(false);
         // navigate("/login");
+        console.log("niezalogowany");
       }
     });
   }, [setIsLogged]);
