@@ -18,22 +18,25 @@ import { app } from "./firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import { firebaseDb } from "./firebase";
 import { collection } from "firebase/firestore";
-import { doc, addDoc, set } from "firebase/firestore";
+import { doc, addDoc, setDoc } from "firebase/firestore";
 import { onSnapshot } from "firebase/firestore";
+import { UserContext } from "./providers/User";
 
 function App() {
+  const { user, setUser } = useContext(UserContext);
   const { isLogged, setIsLogged } = useContext(AuthContext);
   const [basketValue, setBasketValue] = useState(0);
 
   const addToCart = (productValue) => {
-    const pricesRef = collection(firebaseDb, "prices");
-    addDoc(pricesRef, { productValue }).then((response) => {
+    const pricesRef = collection(firebaseDb, "Users", user, 'prices');
+    console.log(pricesRef)
+    addDoc(pricesRef, {productValue}).then((response) => {
       console.log(response);
     });
   };
 
   useEffect(() => {
-    const pricesRef = collection(firebaseDb, "prices");
+    const pricesRef = collection(firebaseDb, "Users", user, 'prices');
 
     const unsubscribe = onSnapshot(
       pricesRef,

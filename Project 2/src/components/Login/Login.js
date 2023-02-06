@@ -4,12 +4,16 @@ import { AuthContext } from "../../providers/Auth";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { firebaseAuth, firebaseDb } from "../../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import { setDoc, doc, collection, addDoc } from "firebase/firestore";
+import { UserContext } from "../../providers/User";
 
 export const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const { isLogged, setIsLogged } = useContext(AuthContext);
   const navigate = useNavigate();
+  const data = { price: 0 };
+  const { user, setUser } = useContext(UserContext);
 
   useEffect(() => {
     if (isLogged) {
@@ -23,13 +27,25 @@ export const Login = () => {
       alert("Please provide user credentials");
     } else {
       try {
-        await createUserWithEmailAndPassword(firebaseAuth, username, password).then(cred => {
-          return firebaseDb.collection('users').doc(cred.user.uid).set({
-            price: 
-          })
+        await createUserWithEmailAndPassword(
+          firebaseAuth,
+          username,
+          password
+        ).then((cred) => {
           setIsLogged(true);
-        })
-        
+          setDoc(doc(firebaseDb, "Users", cred.user.uid), {});
+
+          setUser(cred.user.uid);
+          const newCollectionRef = collection(
+            firebaseDb,
+            "Users",
+            cred.user.uid,
+            "prices"
+          );
+          addDoc(newCollectionRef, {
+            data: 0,
+          });
+        });
       } catch (error) {
         console.log(error.message);
         if (
