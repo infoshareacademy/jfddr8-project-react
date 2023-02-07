@@ -5,16 +5,6 @@ import { Home } from "./components/Home/Home";
 import { AuthContext } from "./providers/Auth";
 import { Login } from "./components/Login/Login";
 import { firebaseAuth } from "./firebase";
-import {
-  setPersistence,
-  signInWithRedirect,
-  inMemoryPersistence,
-  GoogleAuthProvider,
-  browserLocalPersistence,
-  browserSessionPersistence,
-} from "firebase/auth";
-import { useNavigate } from "react-router-dom";
-import { app } from "./firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import { firebaseDb } from "./firebase";
 import { collection } from "firebase/firestore";
@@ -24,39 +14,37 @@ import { UserContext } from "./providers/User";
 import { getDoc } from "firebase/firestore";
 
 function App() {
-  const [products, setProducts] = useState([])
+  const [products, setProducts] = useState([]);
   const { user, setUser } = useContext(UserContext);
   const { isLogged, setIsLogged } = useContext(AuthContext);
   const [basketValue, setBasketValue] = useState(0);
 
-  const addToCart = (product) => {
+  const addToCart = (price, id, title) => {
     const pricesRef = doc(firebaseDb, "Users", user);
-
-    console.log(pricesRef);
-    setDoc(pricesRef, {products: [...products, product]})
+    setProducts(products + { price: price, id: id, title: title });
+    setDoc(pricesRef, {products: products})
   };
 
   // useEffect(() => {
-
-  //   console.log(snapshot.data())
-
-  // }, []);
+  //   const pricesRef = doc(firebaseDb, "Users", 
+  //   user
+  //   );
+  //   setTimeout(setDoc(pricesRef, {name: 'kupsko'}), 1);
+  // }, [products]);
 
   useEffect(() => {
     onAuthStateChanged(firebaseAuth, async (data) => {
       if (data) {
         setIsLogged(true);
         setUser(data.uid);
-        console.log(user);
         const pricesRef = doc(firebaseDb, "Users", data.uid);
-
         const snapshot = await getDoc(pricesRef);
-        console.log(snapshot.data());
+        
       } else {
         setIsLogged(false);
       }
     });
-  }, []);
+  }, [products]);
 
   return (
     <BrowserRouter>

@@ -11,7 +11,7 @@ return (
       <h3>{item.title}</h3>
       <p>{item.description}</p>
       <div>
-      <span>{`${item.price} $ `}<button onClick={() => addToCart(item.price, item.id)}>Dodaj do koszyka</button></span>
+      <span>{`${item.price} $ `}<button onClick={() => addToCart(item.price, item.id, item.title)}>Dodaj do koszyka</button></span>
       </div>
     </div>
   </div>   
