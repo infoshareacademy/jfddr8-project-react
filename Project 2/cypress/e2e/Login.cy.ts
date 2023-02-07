@@ -1,3 +1,5 @@
+import {} from 'cypress';
+
 describe('login is valid', () => {
 	let user;
 	before(() => {

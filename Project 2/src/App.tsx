@@ -14,6 +14,7 @@ function App() {
 	const [price, setPrice] = useState<number>(0);
 	const { isLogged, setIsLogged } = useContext(AuthContext);
 	const [userEmail, setUserEmail] = useState('');
+	const [items, setItems] = useState([])
 
 	useEffect(() => {
 		onAuthStateChanged(auth, async (user) => {
@@ -40,9 +41,15 @@ function App() {
 			await setDoc(doc(db, 'cardValue', userEmail), {
 				value: price + currentProductPrice,
 			});
+			await setDoc(doc(db, 'singleProduct', '9IDJGiNcrNshnOjfl76d'), {
+				id: items.length + 1,
+				title: items.title,
+				price: price
+			} )
 		} catch (error) {
 			console.log(error);
 		}
+		
 	};
 
 	return (
