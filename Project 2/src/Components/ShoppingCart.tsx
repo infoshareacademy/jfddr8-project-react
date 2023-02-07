@@ -1,10 +1,10 @@
-import Auth, { LoginStatus } from "../Providers/Auth";
+import { LoginStatus } from "../Providers/Auth";
 import { useContext } from "react";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase";
 
 type shoppingCartType = {
-  shoppingCart:number
+  shoppingCart: []
 }
 
 function ShoppingCart({ shoppingCart }:shoppingCartType) {

@@ -1,17 +1,32 @@
 import ShoppingCart from "./ShoppingCart";
 import ProductList from "./ProductList";
+import ShoppingCartStatus from "./ShoppingCartStatus";
+import { useState, useContext } from "react";
+
+type ShoppingCartProduct = []
 
 type homeProps = {
-  shoppingCart:number;
+  shoppingCart: ShoppingCartProduct ;
   addToShopping:(itemPrice:number) => void;
   className:string
 }
 
+
 function Home(props:homeProps) {
+  const [showBucket, setShowBucket ] = useState<boolean>(false)
+  
+  const handleButtonClick = ():void =>  {
+    setShowBucket(!showBucket)
+  }
+
   return (
     <div>
+      <button
+      onClick={()=>handleButtonClick()}
+      >Show Shopping Cart</button>
       <ShoppingCart shoppingCart={props.shoppingCart} />
-      <ProductList addToShopping={props.addToShopping} />
+     {showBucket? <ShoppingCartStatus/> : <ProductList addToShopping={props.addToShopping} />}
+      
     </div>
   );
 }

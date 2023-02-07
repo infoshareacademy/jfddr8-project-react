@@ -4,23 +4,21 @@ import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import Login from "./Components/Login";
 import Home from "./Components/Home";
 import { LoginStatus } from "./Providers/Auth";
-import {
-  createUserWithEmailAndPassword,
-  onAuthStateChanged,
-} from "firebase/auth";
+import { onAuthStateChanged } from "firebase/auth";
 import { auth, db } from "./firebase";
-import { collection, getDoc, doc, setDoc } from "firebase/firestore";
+import { getDoc, doc, setDoc } from "firebase/firestore";
 
 function App() {
-  const { isLogged, setIsLogged } = useContext(LoginStatus);
+  const { isLogged, setIsLogged, shoppingCart, setShoppingCart } =
+    useContext(LoginStatus);
   const [userName, setUserName] = useState<string>("");
-  const [shoppingCart, setShoppingCart] = useState<number>(0);
+
 
   const addToShopping = async (itemPrice: number): Promise<void> => {
     try {
       const updateCard = doc(db, "Koszyk", userName);
       setShoppingCart(itemPrice + shoppingCart);
-      await setDoc(updateCard, { CardValue: shoppingCart+itemPrice });
+      await setDoc(updateCard, { Products: shoppingCart + itemPrice });
     } catch (error) {
       console.log(error);
     }
@@ -36,9 +34,11 @@ function App() {
             doc(db, "Koszyk", `${user.email}`)
           );
           if (cardValueSnapshot.exists()) {
-            const { CardValue } = cardValueSnapshot.data();
-            setShoppingCart(CardValue);
-          } else setShoppingCart(0);
+            const { Products } = cardValueSnapshot.data();
+            setShoppingCart(
+              Products.reduce((accumulator, value) => accumulator + value.price)
+            );
+          } else setShoppingCart([]);
         } catch (error) {
           console.log(error);
         }
