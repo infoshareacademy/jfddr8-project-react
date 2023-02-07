@@ -2,7 +2,7 @@ import { ProductListItem } from './ProductListItem';
 
 export const ProductList: React.FC<{
 	products: any;
-	sumPrice: (n: number) => void;
+	addProduct: (param: any) => void;
 }> = (props) => {
 	return (
 		<div>
@@ -15,7 +15,7 @@ export const ProductList: React.FC<{
 						description={el.description}
 						price={el.price}
 						thumbnail={el.thumbnail}
-						sumPrice={props.sumPrice}
+						addProduct={props.addProduct}
 					/>
 				))}
 			</div>

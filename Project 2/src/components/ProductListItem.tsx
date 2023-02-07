@@ -3,13 +3,21 @@ export const ProductListItem: React.FC<{
 	title: string;
 	description: string;
 	price: number;
-	sumPrice: (price: number) => void;
+	id: number;
+	addProduct: (param: any) => void;
 }> = (props) => {
 	return (
 		<div>
 			<img src={props.thumbnail} style={{ width: 80 + 'px' }}></img>
 			{props.title} {props.description} {props.price}
-			<button onClick={() => props.sumPrice(props.price)}>
+			<button
+				onClick={() =>
+					props.addProduct({
+						title: props.title,
+						price: props.price,
+						id: props.id,
+					})
+				}>
 				Dodaj do koszyka
 			</button>
 		</div>

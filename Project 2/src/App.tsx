@@ -11,10 +11,10 @@ import { db } from './firebase';
 import { getDoc, doc, setDoc } from 'firebase/firestore';
 
 function App() {
-	const [price, setPrice] = useState<number>(0);
-	const { isLogged, setIsLogged } = useContext(AuthContext);
+	
+	const { isLogged, setIsLogged, products, setProducts } = useContext(AuthContext);
 	const [userEmail, setUserEmail] = useState('');
-	const [items, setItems] = useState([])
+	
 
 	useEffect(() => {
 		onAuthStateChanged(auth, async (user) => {
@@ -27,25 +27,25 @@ function App() {
 				if (docSnap.exists()) {
 					const data = docSnap.data();
 					console.log(data);
-					setPrice(data.value);
+					setProducts(data.products);
 				}
 			} else {
 				setIsLogged(false);
 			}
 		});
-	}, [setIsLogged, setPrice, price]);
+	}, [setIsLogged, setProducts, products]);
 
-	const SumPrice = async (currentProductPrice: number): Promise<void> => {
+	const addProduct = async (currentProduct: any): Promise<void> => {
 		try {
-			setPrice(price + currentProductPrice);
+			setProducts([...products, currentProduct]);
 			await setDoc(doc(db, 'cardValue', userEmail), {
-				value: price + currentProductPrice,
+				products: [...products, currentProduct],
 			});
-			await setDoc(doc(db, 'singleProduct', '9IDJGiNcrNshnOjfl76d'), {
-				id: items.length + 1,
-				title: items.title,
-				price: price
-			} )
+			// await setDoc(doc(db, ''), {
+			// 	id: items.length + 1,
+			// 	title: items.title,
+			// 	price: price
+			// } )
 		} catch (error) {
 			console.log(error);
 		}
@@ -62,8 +62,8 @@ function App() {
 							isLogged ? (
 								<Home
 									products={ProductsData}
-									sumPrice={SumPrice}
-									price={price}
+									addProduct={addProduct}
+									
 								/>
 							) : (
 								<Navigate to='/login' />
