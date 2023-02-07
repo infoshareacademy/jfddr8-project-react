@@ -21,50 +21,42 @@ import { collection } from "firebase/firestore";
 import { doc, addDoc, setDoc } from "firebase/firestore";
 import { onSnapshot } from "firebase/firestore";
 import { UserContext } from "./providers/User";
+import { getDoc } from "firebase/firestore";
 
 function App() {
+  const [products, setProducts] = useState([])
   const { user, setUser } = useContext(UserContext);
   const { isLogged, setIsLogged } = useContext(AuthContext);
   const [basketValue, setBasketValue] = useState(0);
 
-  const addToCart = (productValue) => {
-    const pricesRef = collection(firebaseDb, "Users", user, 'prices');
-    console.log(pricesRef)
-    addDoc(pricesRef, {productValue}).then((response) => {
-      console.log(response);
-    });
+  const addToCart = (product) => {
+    const pricesRef = doc(firebaseDb, "Users", user);
+
+    console.log(pricesRef);
+    setDoc(pricesRef, {products: [...products, product]})
   };
 
-  useEffect(() => {
-    const pricesRef = collection(firebaseDb, "Users", user, 'prices');
+  // useEffect(() => {
 
-    const unsubscribe = onSnapshot(
-      pricesRef,
-      (docsSnap) => {
-        let prices = 0;
-        docsSnap.forEach((doc) => {
-          prices = prices + doc.get("productValue");
-          console.log(prices);
-          setBasketValue(prices)
-        });
-      },
-      []
-    );
+  //   console.log(snapshot.data())
 
-    return unsubscribe;
-  }, []);
+  // }, []);
 
   useEffect(() => {
-    onAuthStateChanged(firebaseAuth, (data) => {
+    onAuthStateChanged(firebaseAuth, async (data) => {
       if (data) {
         setIsLogged(true);
+        setUser(data.uid);
+        console.log(user);
+        const pricesRef = doc(firebaseDb, "Users", data.uid);
+
+        const snapshot = await getDoc(pricesRef);
+        console.log(snapshot.data());
       } else {
         setIsLogged(false);
       }
     });
   }, []);
-
-
 
   return (
     <BrowserRouter>

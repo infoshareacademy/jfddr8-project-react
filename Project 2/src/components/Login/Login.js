@@ -36,15 +36,7 @@ export const Login = () => {
           setDoc(doc(firebaseDb, "Users", cred.user.uid), {});
 
           setUser(cred.user.uid);
-          const newCollectionRef = collection(
-            firebaseDb,
-            "Users",
-            cred.user.uid,
-            "prices"
-          );
-          addDoc(newCollectionRef, {
-            data: 0,
-          });
+          
         });
       } catch (error) {
         console.log(error.message);
