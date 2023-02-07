@@ -83,3 +83,11 @@ Firebase.
 
 5. Następnie przechowywanie ceny produktów usuwamy z localStorage i dodajemy do przechowania w pamięci firebase produktów per użytkownik.
 
+## Zadanie 7:
+
+Firebase c.d.
+
+1. W Home utwórz dodatkowy komponent odpowiedzialny za wyświetlanie produktów dodanych do koszyka. Obok koszyka i sumy cen produktów można dać przycisk, który będzie sterował widocznością tego komponentu.
+
+2. Komponent ma wyświetlać listę produktów dodanych do koszyka (nazwa produktu, cena i przycisk "usuń z koszyka"). Od tej pory, w kontekście (i w bazie danych) zapisujemy nie sumę cen produktów, ale array z produktami dodanymi do koszyka ({id: nadawane przez nas, nie brane z pliku products.js!, price, title}). Sumę cen pokazujemy również, ale wyliczamy ją sami na podstawie produktów z listy.
+
