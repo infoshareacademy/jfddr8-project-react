@@ -14,7 +14,7 @@ import { Login } from './components/Login/Login';
 import { firebaseAuth, firebaseDb } from './index';
 
 function App() {
-  const { username, setUsername, setCartValue } = useContext(StoreContext);
+  const { username, setUsername, setCartProducts } = useContext(StoreContext);
   const navigate = useNavigate();
 
   useEffect((): void => {
@@ -24,22 +24,22 @@ function App() {
         setUsername(userEmail);
 
         try {
-          const docRef = doc(firebaseDb, "cartValue", `${userEmail}`);
+          const docRef = doc(firebaseDb, "cart", `${userEmail}`);
           const cartValueSnapshot = await getDoc(docRef);
           console.log(cartValueSnapshot);
           if (cartValueSnapshot.exists()) {
             const data = cartValueSnapshot.data();
-            setCartValue(data.value);
+            setCartProducts(data.products);
           }
         } catch (error) {
           console.log(error);
         }
       } else {
         setUsername('');
-        setCartValue(0);
+        setCartProducts([]);
       }
     });
-  }, [setCartValue, setUsername]);
+  }, [setCartProducts, setUsername]);
 
   useEffect((): void => {
     if (username) {

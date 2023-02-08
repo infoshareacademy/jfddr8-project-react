@@ -1,12 +1,12 @@
 import products from "../../data/products";
+import { CartProduct } from "../../providers/StoreProvider";
 import { ProductListItem } from "../ProductListItem/ProductListItem";
 
 type ProductListProps = {
-  addToCart: (productValue: number) => void;
+  addToCart: (product: CartProduct) => void;
 }
 
 export const ProductList = ( {addToCart}: ProductListProps ): JSX.Element => {
-
 
     return (
       <>

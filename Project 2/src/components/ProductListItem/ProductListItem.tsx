@@ -1,3 +1,6 @@
+import { useContext } from "react";
+import { CartProduct, StoreContext } from "../../providers/StoreProvider";
+
 type ProductListItemProps = {
   item: {
     title: string;
@@ -5,10 +8,12 @@ type ProductListItemProps = {
     id: number;
     price: number;
   },
-  addToCart: (productValue: number) => void;
+  addToCart: (product: CartProduct) => void;
 }
 
 export const ProductListItem = ({item, addToCart}: ProductListItemProps): JSX.Element => {
+
+const { cartProducts } = useContext(StoreContext);
   
 const logoSrc = "https://dummyjson.com/image/i/products/"
 
@@ -21,7 +26,7 @@ return (
       <h3>{item.title}</h3>
       <p>{item.description}</p>
       <div>
-      <span>{`${item.price} $ `}<button onClick={() => addToCart(item.price)}>Dodaj do koszyka</button></span>
+      <span>{`${item.price} $ `}<button onClick={() => addToCart({title: item.title, price: item.price, id: cartProducts.length + 1})}>Dodaj do koszyka</button></span>
       </div>
     </div>
   </div>   
